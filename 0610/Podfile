@@ -14,5 +14,6 @@ target '0610' do
   pod 'SwifterSwift'
   pod 'MarqueeLabel'
   pod 'JXMarqueeView'
+  pod "ShowAPI_SDK"
   
 end

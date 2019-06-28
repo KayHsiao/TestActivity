@@ -7,26 +7,76 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class HomeViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
 
     var vcType: MyViewControllerType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "xinxi"), style: .plain, target: self, action: nil)
 
-        // Do any additional setup after loading the view.
+
+
+
+
+
+
+        requestManager.getTaipeiCafe { [weak self] (json) in
+            log.info(json)
+            guard let strongSelf = self else { return }
+        }
+
+
+//                let session = URLSession.shared
+//
+//                let url = URL(string: "https://cafenomad.tw/api/v1.2/cafes/taipei")!
+//
+//                let task = session.dataTask(with: url) { data, response, error in
+//
+//                    if error != nil || data == nil {
+//                        print("Client error!")
+//                        return
+//                    }
+//
+//                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                        print("Server error!")
+//                        return
+//                    }
+//
+//                    guard let mime = response.mimeType, mime == "application/json" else {
+//                        print("Wrong MIME type!")
+//                        return
+//                    }
+//
+//                    do {
+//                        let json = try JSONSerialization.jsonObject(with: data!, options: [])
+//                        print(json)
+//                    } catch {
+//                        print("JSON error: \(error.localizedDescription)")
+//                    }
+//                }
+//
+//                task.resume()
+
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+
     }
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
     }
-    */
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CafeTableViewCell", for: indexPath) as! CafeTableViewCell
+        
+        return cell
+    }
 }

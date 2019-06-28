@@ -24,9 +24,26 @@ enum ServerEnvironment {
     var domainString: String {
         switch self {
         case .test:
-            return "https://raw.githubusercontent.com/2635573591/Activity"
+            var keys: NSDictionary?
+            if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+                keys = NSDictionary(contentsOfFile: path)
+            }
+
+            let testApiKeyDomain = keys?["ApiKeyDomainTest"] as? String ?? "https://raw.githubusercontent.com/2635573591/Activity"
+            log.debug("testApiKeyDomain: \(testApiKeyDomain)")
+
+            return testApiKeyDomain
+
         case .production:
-            return "https://正式環境網址"
+            var keys: NSDictionary?
+            if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+                keys = NSDictionary(contentsOfFile: path)
+            }
+
+            let productionApiKeyDomain = keys?["ApiKeyDomainProduction"] as? String ?? "https://正式環境網址"
+            log.debug("productionApiKeyDomain: \(productionApiKeyDomain)")
+
+            return productionApiKeyDomain
         }
     }
 }
@@ -140,6 +157,11 @@ extension RequestManager {
     /// 
     func getMarqueel(success: @escaping (_ data: JSON) -> Void) {
         baseRequest(.get, url: AppAPI.popular, parameters: nil, needToken: false, callback: success)
+    }
+
+    ///
+    func getTaipeiCafe (success: @escaping (_ data: JSON) -> Void) {
+        baseRequest(.get, url: "https://cafenomad.tw/api/v1.2/cafes/taipei", parameters: nil, needToken: false, callback: success)
     }
 
 }

@@ -35,6 +35,8 @@
 		8381389B22AF63170029683F /* CollectiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381389A22AF63170029683F /* CollectiveViewController.swift */; };
 		838138A122AF63950029683F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838138A022AF63950029683F /* SettingViewController.swift */; };
 		8382C1A122B1EEB10055CCD4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382C1A022B1EEB10055CCD4 /* Activity.swift */; };
+		83ABE71E22BCDE88007B04FB /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83ABE71D22BCDE88007B04FB /* Keys.plist */; };
+		83B60DE722C618FF00C49C58 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */; };
 		83DA91FA22B733CA00F85385 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA91F822B733CA00F85385 /* RouteTableViewCell.swift */; };
 		83DA91FB22B733CA00F85385 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83DA91F922B733CA00F85385 /* RouteTableViewCell.xib */; };
 		83DA91FE22B737D200F85385 /* PayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA91FC22B737D200F85385 /* PayTableViewCell.swift */; };
@@ -84,6 +86,8 @@
 		8381389A22AF63170029683F /* CollectiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectiveViewController.swift; sourceTree = "<group>"; };
 		838138A022AF63950029683F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8382C1A022B1EEB10055CCD4 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		83ABE71D22BCDE88007B04FB /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeTableViewCell.swift; sourceTree = "<group>"; };
 		83DA91F822B733CA00F85385 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		83DA91F922B733CA00F85385 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
 		83DA91FC22B737D200F85385 /* PayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableViewCell.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 		83E26AE122AFA3A00080CBA4 /* ImageSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSectionView.xib; sourceTree = "<group>"; };
 		83E26AE322AFB05A0080CBA4 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		83E26AE422AFB05A0080CBA4 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		83FE325C22C4AFE900030E73 /* 0610-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "0610-Bridging-Header.h"; sourceTree = "<group>"; };
 		89E7B6C47B7734575347E5E1 /* Pods-0610.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-0610.release.xcconfig"; path = "Pods/Target Support Files/Pods-0610/Pods-0610.release.xcconfig"; sourceTree = "<group>"; };
 		8A78272EB4746B68719E04B4 /* Pods_0610.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_0610.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -205,6 +210,8 @@
 				8341C8E722AE40DA0070EBA0 /* Assets.xcassets */,
 				8341C8E922AE40DA0070EBA0 /* LaunchScreen.storyboard */,
 				8341C8EC22AE40DA0070EBA0 /* Info.plist */,
+				83ABE71D22BCDE88007B04FB /* Keys.plist */,
+				83FE325C22C4AFE900030E73 /* 0610-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -225,6 +232,7 @@
 		83E26ADE22AFA2F90080CBA4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */,
 				8340704C22B383DC00F642F4 /* BannerTableViewCell.xib */,
 				8340704B22B383DC00F642F4 /* BannerTableViewCell.swift */,
 				836811DC22B8DA2F00FAC2A9 /* TypeTwoTableViewCell.xib */,
@@ -301,6 +309,7 @@
 				TargetAttributes = {
 					8341C8DC22AE40D90070EBA0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -327,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83ABE71E22BCDE88007B04FB /* Keys.plist in Resources */,
 				83E26AE622AFB05A0080CBA4 /* ImageTableViewCell.xib in Resources */,
 				8340704E22B383DC00F642F4 /* BannerTableViewCell.xib in Resources */,
 				83DA91FB22B733CA00F85385 /* RouteTableViewCell.xib in Resources */,
@@ -402,6 +412,7 @@
 				8341C8E122AE40D90070EBA0 /* AppDelegate.swift in Sources */,
 				83E26ADD22AFA2F20080CBA4 /* ImageSectionView.swift in Sources */,
 				8382C1A122B1EEB10055CCD4 /* Activity.swift in Sources */,
+				83B60DE722C618FF00C49C58 /* CafeTableViewCell.swift in Sources */,
 				838138A122AF63950029683F /* SettingViewController.swift in Sources */,
 				8340704422B37B4A00F642F4 /* LLPillPageControl.swift in Sources */,
 				836811E122B8E5A900FAC2A9 /* TypeFourTableViewCell.swift in Sources */,
@@ -563,6 +574,7 @@
 			baseConfigurationReference = 797C3158F5E41D54024D0A52 /* Pods-0610.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 854847YMD9;
 				INFOPLIST_FILE = "$(SRCROOT)/0610/Supporting Files/Info.plist";
@@ -572,6 +584,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hdihdif.-610";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "0610/Supporting Files/0610-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -582,6 +596,7 @@
 			baseConfigurationReference = 89E7B6C47B7734575347E5E1 /* Pods-0610.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 854847YMD9;
 				INFOPLIST_FILE = "$(SRCROOT)/0610/Supporting Files/Info.plist";
@@ -591,6 +606,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hdihdif.-610";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "0610/Supporting Files/0610-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

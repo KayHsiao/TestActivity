@@ -2,13 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>0610.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
-		</dict>
-	</dict>
+	<key>ApiKeyDomainTest</key>
+	<string>https://raw.githubusercontent.com/2635573591/Activity</string>
+	<key>ApiKeyDomainProduction</key>
+	<string></string>
 </dict>
 </plist>
