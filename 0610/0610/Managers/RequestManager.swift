@@ -29,7 +29,7 @@ enum ServerEnvironment {
                 keys = NSDictionary(contentsOfFile: path)
             }
 
-            let testApiKeyDomain = keys?["ApiKeyDomainTest"] as? String ?? "https://raw.githubusercontent.com/2635573591/Activity"
+            let testApiKeyDomain = keys?["ApiKeyDomainTest"] as? String ?? "https://raw.githubusercontent.com/KayHsiao/TestActivity"
             log.debug("testApiKeyDomain: \(testApiKeyDomain)")
 
             return testApiKeyDomain
@@ -53,12 +53,12 @@ struct AppAPI {
         return requestManager.serverEnviroment.domainString + url
     }
 
-    static let activitys   = stripURL("/master/activitys.json")
-    static let course = stripURL("/master/course.json")
-    static let party = stripURL("/master/party.json")
-    static let popular = stripURL("/master/popular.json")
-    static let hot = stripURL("/master/hot.json")
-    static let marqueel = stripURL("/master/marqueel.json")
+    static let activitys   = stripURL("/master/Activities.json")
+    static let course = stripURL("/master/Course.json")
+    static let party = stripURL("/master/Party.json")
+    static let popular = stripURL("/master/Popular.json")
+    static let hot = stripURL("/master/Hot.json")
+    static let marqueel = stripURL("/master/Marqueel.json")
 }
 
 class RequestManager {
@@ -85,12 +85,12 @@ class RequestManager {
             "Content-Type": "application/json"
         ]
 
-//        SVProgressHUD.show()
+        SVProgressHUD.show()
 
         currentRequest = Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response -> Void in
                 
-//                SVProgressHUD.dismiss()
+                SVProgressHUD.dismiss()
 
                 switch response.result {
                 case .success:
@@ -159,9 +159,14 @@ extension RequestManager {
         baseRequest(.get, url: AppAPI.popular, parameters: nil, needToken: false, callback: success)
     }
 
-    ///
+    /// 台北咖啡廳
     func getTaipeiCafe (success: @escaping (_ data: JSON) -> Void) {
         baseRequest(.get, url: "https://cafenomad.tw/api/v1.2/cafes/taipei", parameters: nil, needToken: false, callback: success)
+    }
+
+    /// 宜蘭咖啡廳
+    func getYilanCafe (success: @escaping (_ data: JSON) -> Void) {
+        baseRequest(.get, url: "https://cafenomad.tw/api/v1.2/cafes/yilan", parameters: nil, needToken: false, callback: success)
     }
 
 }

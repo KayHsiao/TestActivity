@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ApiKeyDomainTest</key>
-	<string>https://raw.githubusercontent.com/2635573591/Activity</string>
+	<string>https://raw.githubusercontent.com/KayHsiao/TestActivity</string>
 	<key>ApiKeyDomainProduction</key>
 	<string></string>
 </dict>

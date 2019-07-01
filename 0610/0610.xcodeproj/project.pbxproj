@@ -37,6 +37,7 @@
 		8382C1A122B1EEB10055CCD4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382C1A022B1EEB10055CCD4 /* Activity.swift */; };
 		83ABE71E22BCDE88007B04FB /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83ABE71D22BCDE88007B04FB /* Keys.plist */; };
 		83B60DE722C618FF00C49C58 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */; };
+		83BCCD1B22C9C4B5007EFD14 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BCCD1A22C9C4B5007EFD14 /* Cafe.swift */; };
 		83DA91FA22B733CA00F85385 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA91F822B733CA00F85385 /* RouteTableViewCell.swift */; };
 		83DA91FB22B733CA00F85385 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83DA91F922B733CA00F85385 /* RouteTableViewCell.xib */; };
 		83DA91FE22B737D200F85385 /* PayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA91FC22B737D200F85385 /* PayTableViewCell.swift */; };
@@ -88,6 +89,7 @@
 		8382C1A022B1EEB10055CCD4 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		83ABE71D22BCDE88007B04FB /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeTableViewCell.swift; sourceTree = "<group>"; };
+		83BCCD1A22C9C4B5007EFD14 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		83DA91F822B733CA00F85385 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		83DA91F922B733CA00F85385 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
 		83DA91FC22B737D200F85385 /* PayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				8382C1A022B1EEB10055CCD4 /* Activity.swift */,
 				836811F622BB6B6800FAC2A9 /* ActivityCellContent.swift */,
+				83BCCD1A22C9C4B5007EFD14 /* Cafe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				8340704522B37B4A00F642F4 /* LLCycleScrollView.swift in Sources */,
 				8341C8E122AE40D90070EBA0 /* AppDelegate.swift in Sources */,
 				83E26ADD22AFA2F20080CBA4 /* ImageSectionView.swift in Sources */,
+				83BCCD1B22C9C4B5007EFD14 /* Cafe.swift in Sources */,
 				8382C1A122B1EEB10055CCD4 /* Activity.swift in Sources */,
 				83B60DE722C618FF00C49C58 /* CafeTableViewCell.swift in Sources */,
 				838138A122AF63950029683F /* SettingViewController.swift in Sources */,
