@@ -1,0 +1,28 @@
+{
+    "tintColor": "FFFFFF",
+    "tabBarColor": "7CE2FF",
+    "unSelectedTabBarColor": "CCCCCC",
+    "list":
+    [
+        {
+            "vc": "ViewController0",
+            "img": "zhuce",
+            "name": "宜蘭工作咖啡廳"
+        },
+        {
+            "vc": "ViewController3",
+            "img": "speaker",
+            "name": "首页"
+        },
+        {
+            "vc": "ViewController4",
+            "img": "youhui",
+            "name": "活动优惠"
+        },
+        {
+            "vc": "ViewController5",
+            "img": "xinxi",
+            "name": "彩金申请"
+        }
+    ]
+}
