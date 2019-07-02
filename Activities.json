@@ -10,19 +10,14 @@
             "name": "宜蘭工作咖啡廳"
         },
         {
-            "vc": "ViewController3",
+            "vc": "ViewController1",
             "img": "speaker",
-            "name": "首页"
+            "name": "地圖"
         },
         {
-            "vc": "ViewController4",
+            "vc": "ViewController2",
             "img": "youhui",
-            "name": "活动优惠"
-        },
-        {
-            "vc": "ViewController5",
-            "img": "xinxi",
-            "name": "彩金申请"
+            "name": "我的"
         }
     ]
 }
