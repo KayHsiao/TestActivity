@@ -165,8 +165,36 @@ extension RequestManager {
     }
 
     /// 宜蘭咖啡廳
-    func getYilanCafe (success: @escaping (_ data: JSON) -> Void) {
-        baseRequest(.get, url: "https://cafenomad.tw/api/v1.2/cafes/yilan", parameters: nil, needToken: false, callback: success)
+    func getYilanCafe (success: @escaping (_ cafes: [Cafe]) -> Void) {
+        baseRequest(.get, url: "https://cafenomad.tw/api/v1.2/cafes/yilan") { (json) in
+            let cafeArray = json.arrayValue
+            log.info("cafeArray count is \(cafeArray.count)")
+
+            var cafes: [Cafe] = []
+
+            for key in cafeArray {
+                let cafe = Cafe(id: key["id"].stringValue,
+                                mrt: key["mrt"].stringValue,
+                                url: key["url"].stringValue,
+                                city: key["city"].stringValue,
+                                name: key["name"].stringValue,
+                                socket: key["socket"].stringValue,
+                                address: key["address"].stringValue,
+                                longitude: key["longitude"].stringValue,
+                                latitude: key["latitude"].stringValue,
+                                limited_time: key["limited_time"].stringValue,
+                                standing_desk: key["standing_desk"].stringValue,
+                                wifi: key["wifi"].intValue,
+                                seat: key["seat"].intValue,
+                                quiet: key["quiet"].intValue,
+                                tasty: key["tasty"].intValue,
+                                cheap: key["cheap"].intValue,
+                                music: key["music"].intValue)
+                cafes.append(cafe)
+            }
+
+            success(cafes)
+        }
     }
 
 }

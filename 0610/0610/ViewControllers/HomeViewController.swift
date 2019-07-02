@@ -9,10 +9,19 @@
 import UIKit
 import SwiftyJSON
 
+enum CafeRatingType {
+    case wifi
+    case seat
+    case quiet
+    case tasty
+    case cheap
+    case music
+}
+
 class HomeViewController: UIViewController {
 
     var cafes: [Cafe] = []
-    var searchCafes: [Cafe] = []
+    var searchResult: [Cafe] = []
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -27,11 +36,20 @@ class HomeViewController: UIViewController {
         getJSON()
     }
 
-    func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "xinxi"), style: .plain, target: self, action: nil)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.barStyle = .black
+    }
 
-        navigationController?.navigationBar.backgroundColor = UIColor(hexString: "7CE2FF")
-        navigationController?.navigationBar.barTintColor = UIColor(hexString: "7CE2FF")
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "xinxi"), style: .plain, target: self, action: #selector(showSortActions))
+
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.backgroundColor = UIColor(named: "Green 2")
+        } else {
+            // Fallback on earlier versions
+        }
+        navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -41,12 +59,16 @@ class HomeViewController: UIViewController {
 
         navigationItem.searchController = UISearchController(searchResultsController: nil)
         self.definesPresentationContext = true
+
+        navigationItem.searchController?.searchResultsUpdater = self
         navigationItem.searchController?.dimsBackgroundDuringPresentation = false
-        navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
+        //        navigationItem.searchController?.hidesNavigationBarDuringPresentation = true
 
         navigationItem.searchController?.searchBar.sizeToFit()
+        navigationItem.searchController?.searchBar.placeholder = "搜尋店家名稱、地址"
+        navigationItem.searchController?.searchBar.tintColor = .white
         navigationItem.searchController?.searchBar.delegate = self
-        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
 
     func setupTableView() {
@@ -56,74 +78,89 @@ class HomeViewController: UIViewController {
     }
 
     func getJSON() {
-        cafes = []
-//        activityIndicatorView.startAnimating()
-//        infoLabel.isHidden = true
-
-        requestManager.getYilanCafe { [weak self] (json) in
-            log.info(json)
+        requestManager.getYilanCafe { [weak self] (cafes) in
             guard let strongSelf = self else { return }
-
-//            strongSelf.activityIndicatorView.stopAnimating()
-
-            let cafeArray = json.arrayValue
-            log.info("cafeArray count is \(cafeArray.count)")
-
-            for key in cafeArray {
-                let cafe = Cafe(name: key["name"].stringValue, address: key["address"].stringValue, wifi: key["wifi"].intValue, seat: key["seat"].intValue, quiet: key["quiet"].intValue, tasty: key["tasty"].intValue, cheap: key["cheap"].intValue, music: key["music"].intValue)
-                strongSelf.cafes.append(cafe)
-            }
-
+            strongSelf.cafes = cafes
             strongSelf.tableView.reloadData()
         }
-
-
-        //                let session = URLSession.shared
-        //
-        //                let url = URL(string: "https://cafenomad.tw/api/v1.2/cafes/taipei")!
-        //
-        //                let task = session.dataTask(with: url) { data, response, error in
-        //
-        //                    if error != nil || data == nil {
-        //                        print("Client error!")
-        //                        return
-        //                    }
-        //
-        //                    guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-        //                        print("Server error!")
-        //                        return
-        //                    }
-        //
-        //                    guard let mime = response.mimeType, mime == "application/json" else {
-        //                        print("Wrong MIME type!")
-        //                        return
-        //                    }
-        //
-        //                    do {
-        //                        let json = try JSONSerialization.jsonObject(with: data!, options: [])
-        //                        print(json)
-        //                    } catch {
-        //                        print("JSON error: \(error.localizedDescription)")
-        //                    }
-        //                }
-        //
-        //                task.resume()
     }
 
-    func searchCafe(query: String?) {
-        guard let query = query, !query.isEmpty else {
+    func filterContentForSearchText(searchText: String?) {
+        guard let searchText = searchText, !searchText.isEmpty else {
+            searchResult.removeAll()
             return
         }
 
-        searchCafes = []
-
-        for cafe in cafes {
-            if cafe.name.hasPrefix(query) || cafe.address.hasPrefix(query) {
-                searchCafes.append(cafe)
+        searchResult = cafes.filter({ (cafe) -> Bool in
+            if cafe.name.lowercased().range(of: searchText.lowercased()) != nil {
+                return true
             }
-        }
+            if cafe.address.lowercased().range(of: searchText.lowercased()) != nil {
+                return true
+            }
+            return false
+        })
+    }
 
-        tableView.reloadData()
+    @objc func showSortActions() {
+        let alertController = UIAlertController.init(title: "依種類排序", message: "由大到小", preferredStyle: .actionSheet)
+        alertController.addAction(title: "WIFI穩定", style: .default, isEnabled: true) { (action) in
+            self.sortCafes(with: .wifi)
+        }
+        alertController.addAction(title: "通常有位", style: .default, isEnabled: true) { (action) in
+            self.sortCafes(with: .seat)
+        }
+        alertController.addAction(title: "安靜程度", style: .default, isEnabled: true) { (action) in
+            self.sortCafes(with: .quiet)
+        }
+        alertController.addAction(title: "咖啡好喝", style: .default, isEnabled: true) { (action) in
+            self.sortCafes(with: .tasty)
+        }
+        alertController.addAction(title: "價格便宜", style: .default, isEnabled: true) { (action) in
+            self.sortCafes(with: .cheap)
+        }
+        alertController.addAction(title: "裝潢音樂", style: .default, isEnabled: true) { (action) in
+            self.sortCafes(with: .music)
+        }
+        alertController.addAction(title: "取消", style: .cancel, isEnabled: true) { (action) in
+            //
+        }
+        alertController.show()
+    }
+
+    func sortCafes(with type: CafeRatingType) {
+        switch type {
+        case .wifi:
+            cafes.sort { (a, b) -> Bool in
+                return a.wifi > b.wifi
+            }
+            tableView.reloadData()
+        case .seat:
+            cafes.sort { (a, b) -> Bool in
+                return a.seat > b.seat
+            }
+            tableView.reloadData()
+        case .quiet:
+            cafes.sort { (a, b) -> Bool in
+                return a.quiet > b.quiet
+            }
+            tableView.reloadData()
+        case .cheap:
+            cafes.sort { (a, b) -> Bool in
+                return a.cheap > b.cheap
+            }
+            tableView.reloadData()
+        case .music:
+            cafes.sort { (a, b) -> Bool in
+                return a.music > b.music
+            }
+            tableView.reloadData()
+        case .tasty:
+            cafes.sort { (a, b) -> Bool in
+                return a.tasty > b.tasty
+            }
+            tableView.reloadData()
+        }
     }
 
 }
@@ -132,7 +169,7 @@ extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if navigationItem.searchController!.isActive {
-            return searchCafes.count
+            return searchResult.count
         } else {
             return cafes.count
         }
@@ -148,7 +185,7 @@ extension HomeViewController: UITableViewDataSource {
         cell.indexPath = indexPath
 
         if navigationItem.searchController!.isActive {
-            let cafe = searchCafes[indexPath.row]
+            let cafe = searchResult[indexPath.row]
             cell.cafe = cafe
         } else {
             let cafe = cafes[indexPath.row]
@@ -163,7 +200,17 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        if navigationItem.searchController!.isActive {
+            let cafe = searchResult[indexPath.row]
+            if let url = URL(string: cafe.url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            let cafe = cafes[indexPath.row]
+            if let url = URL(string: cafe.url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 
 }
@@ -177,28 +224,27 @@ extension HomeViewController: CafeTableViewCellDelegate {
 }
 
 extension HomeViewController: UISearchResultsUpdating {
+
     func updateSearchResults(for searchController: UISearchController) {
-        //
+        let searchText = searchController.searchBar.text
+        filterContentForSearchText(searchText: searchText)
+        tableView.reloadData()
     }
+
 }
 
 extension HomeViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-
-        searchCafe(query: searchBar.text)
     }
 
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//    }
 
-        searchCafes.removeAll()
-        tableView.reloadData()
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchCafe(query: searchBar.text)
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//
+//    }
 
 }

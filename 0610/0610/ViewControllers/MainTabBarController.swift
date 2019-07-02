@@ -24,6 +24,10 @@ class MainTabBarController: UITabBarController {
 
     var myVCs: [Activity] = []
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getJSON()
@@ -66,30 +70,30 @@ class MainTabBarController: UITabBarController {
             case "ViewController0":
                 let homeVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
 
-                homeVC.navigationItem.title = myVC.name
+                homeVC.navigationItem.title = "宜蘭工作咖啡廳"
 
                 let homeNav = UINavigationController.init(rootViewController: homeVC)
                 homeNav.navigationBar.prefersLargeTitles = true
-                homeNav.tabBarItem.image = UIImage(named: myVC.img)
-                homeNav.tabBarItem.title = myVC.name
+                homeNav.tabBarItem.image = UIImage(named: "zhuce")
+                homeNav.tabBarItem.title = "咖啡廳"
 
                 vcs.append(homeNav)
 
             case "ViewController1":
-                let collectiveVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CollectiveViewController") as! CollectiveViewController
-                collectiveVC.navigationItem.title = myVC.name
+                let collectiveVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+                collectiveVC.navigationItem.title = "地圖"
                 let collectiveNav = UINavigationController.init(rootViewController: collectiveVC)
-                collectiveNav.tabBarItem.image = UIImage(named: myVC.img)
-                collectiveNav.tabBarItem.title = myVC.name
+                collectiveNav.tabBarItem.image = UIImage(named: "user")
+                collectiveNav.tabBarItem.title = "地圖"
 
                 vcs.append(collectiveNav)
 
             case "ViewController2":
                 let settingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-                settingVC.navigationItem.title = myVC.name
+                settingVC.navigationItem.title = "我的"
                 let settingNav = UINavigationController.init(rootViewController: settingVC)
-                settingNav.tabBarItem.image = UIImage(named: myVC.img)
-                settingNav.tabBarItem.title = myVC.name
+                settingNav.tabBarItem.image = UIImage(named: "heart")
+                settingNav.tabBarItem.title = "我的"
 
                 vcs.append(settingNav)
 

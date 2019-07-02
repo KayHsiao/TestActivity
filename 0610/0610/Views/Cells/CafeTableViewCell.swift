@@ -31,6 +31,8 @@ class CafeTableViewCell: UITableViewCell {
                     return acc + "☆"
                 }
                 wifiStarLabel.text = wifiText + emptyWifiText
+                wifiStarLabel.textColor = cafe.wifi == 5 ? UIColor(named: "Yellow") : UIColor(named: "Gray 1")
+                wifiStarLabel.textColor = cafe.wifi == 1 ? UIColor(named: "Red") : wifiStarLabel.textColor
 
                 // seat
                 let seatText = (0..<cafe.seat).reduce("") { (acc, _) -> String in
@@ -39,7 +41,9 @@ class CafeTableViewCell: UITableViewCell {
                 let emptySeatText = (cafe.seat..<5).reduce("") { (acc, _) -> String in
                     return acc + "☆"
                 }
-                wifiStarLabel.text = seatText + emptySeatText
+                seatStarLabel.text = seatText + emptySeatText
+                seatStarLabel.textColor = cafe.seat == 5 ? UIColor(named: "Yellow") : UIColor(named: "Gray 1")
+                seatStarLabel.textColor = cafe.seat == 1 ? UIColor(named: "Red") : seatStarLabel.textColor
 
                 // quiet
                 let quietText = (0..<cafe.quiet).reduce("") { (acc, _) -> String in
@@ -48,7 +52,9 @@ class CafeTableViewCell: UITableViewCell {
                 let emptyQuietText = (cafe.quiet..<5).reduce("") { (acc, _) -> String in
                     return acc + "☆"
                 }
-                wifiStarLabel.text = quietText + emptyQuietText
+                quiteStarLabel.text = quietText + emptyQuietText
+                quiteStarLabel.textColor = cafe.quiet == 5 ? UIColor(named: "Yellow") : UIColor(named: "Gray 1")
+                quiteStarLabel.textColor = cafe.quiet == 1 ? UIColor(named: "Red") : quiteStarLabel.textColor
 
                 // tasty
                 let tastyText = (0..<cafe.tasty).reduce("") { (acc, _) -> String in
@@ -57,7 +63,9 @@ class CafeTableViewCell: UITableViewCell {
                 let emptyTastyText = (cafe.tasty..<5).reduce("") { (acc, _) -> String in
                     return acc + "☆"
                 }
-                wifiStarLabel.text = tastyText + emptyTastyText
+                tastyStarLabel.text = tastyText + emptyTastyText
+                tastyStarLabel.textColor = cafe.tasty == 5 ? UIColor(named: "Yellow") : UIColor(named: "Gray 1")
+                tastyStarLabel.textColor = cafe.tasty == 1 ? UIColor(named: "Red") : tastyStarLabel.textColor
 
                 // cheap
                 let cheapText = (0..<cafe.cheap).reduce("") { (acc, _) -> String in
@@ -66,7 +74,9 @@ class CafeTableViewCell: UITableViewCell {
                 let emptyCheapText = (cafe.cheap..<5).reduce("") { (acc, _) -> String in
                     return acc + "☆"
                 }
-                wifiStarLabel.text = cheapText + emptyCheapText
+                cheapStarLabel.text = cheapText + emptyCheapText
+                cheapStarLabel.textColor = cafe.cheap == 5 ? UIColor(named: "Yellow") : UIColor(named: "Gray 1")
+                cheapStarLabel.textColor = cafe.cheap == 1 ? UIColor(named: "Red") : cheapStarLabel.textColor
 
                 // music
                 let musicText = (0..<cafe.music).reduce("") { (acc, _) -> String in
@@ -75,7 +85,9 @@ class CafeTableViewCell: UITableViewCell {
                 let emptyMusicText = (cafe.music..<5).reduce("") { (acc, _) -> String in
                     return acc + "☆"
                 }
-                wifiStarLabel.text = musicText + emptyMusicText
+                musicStarLabel.text = musicText + emptyMusicText
+                musicStarLabel.textColor = cafe.music == 5 ? UIColor(named: "Yellow") : UIColor(named: "Gray 1")
+                musicStarLabel.textColor = cafe.music == 1 ? UIColor(named: "Red") : musicStarLabel.textColor
             }
         }
     }
@@ -123,8 +135,9 @@ class CafeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        cardView.backgroundColor = UIColor(named: "Green 2")
         cardView.cornerRadius = 10
-        cardView.shadowColor = UIColor.init(hexString: "67B9D0")
+        cardView.shadowColor = UIColor(named: "Green 1")
         cardView.shadowOffset = CGSize(width: 0, height: 4)
         cardView.shadowRadius = 4
         cardView.shadowOpacity = 0.7
@@ -133,6 +146,13 @@ class CafeTableViewCell: UITableViewCell {
         collectButton.setImage(UIImage(named: "youhui")?.withRenderingMode(.alwaysTemplate), for: .normal)
         collectButton.setImage(UIImage(named: "speaker")?.withRenderingMode(.alwaysTemplate), for: .selected)
         collectButton.tintColor = .white
+
+        wifiLabel.textColor = UIColor(named: "Gray 1")
+        seatLabel.textColor = UIColor(named: "Gray 1")
+        tastyLabel.textColor = UIColor(named: "Gray 1")
+        cheapLabel.textColor = UIColor(named: "Gray 1")
+        quiteLabel.textColor = UIColor(named: "Gray 1")
+        musicLabel.textColor = UIColor(named: "Gray 1")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

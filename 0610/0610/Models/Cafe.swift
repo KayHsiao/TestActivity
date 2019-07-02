@@ -9,8 +9,18 @@
 import Foundation
 
 struct Cafe {
+    var id: String
+    var mrt: String
+    var url: String
+    var city: String
     var name: String
+    var socket: String
     var address: String
+    var longitude: String
+    var latitude: String
+    var limited_time: String
+    var standing_desk: String
+
     var wifi: Int
     var seat: Int
     var quiet: Int
