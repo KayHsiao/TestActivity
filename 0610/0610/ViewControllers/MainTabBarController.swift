@@ -73,7 +73,11 @@ class MainTabBarController: UITabBarController {
                 homeVC.navigationItem.title = "宜蘭工作咖啡廳"
 
                 let homeNav = UINavigationController.init(rootViewController: homeVC)
-                homeNav.navigationBar.prefersLargeTitles = true
+                if #available(iOS 11.0, *) {
+                    homeNav.navigationBar.prefersLargeTitles = true
+                } else {
+                    // Fallback on earlier versions
+                }
                 homeNav.tabBarItem.image = UIImage(named: "zhuce")
                 homeNav.tabBarItem.title = "咖啡廳"
 

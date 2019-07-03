@@ -20,14 +20,17 @@ enum CafeRatingType {
 
 class HomeViewController: UIViewController {
 
+    var vcType: MyViewControllerType!
+
     var cafes: [Cafe] = []
     var searchResult: [Cafe] = []
+
+    var refreshControl: UIRefreshControl!
+    var searchController: UISearchController!
 
     @IBOutlet weak var tableView: UITableView!
 
 //    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-
-    var vcType: MyViewControllerType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,44 +47,63 @@ class HomeViewController: UIViewController {
     func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "xinxi"), style: .plain, target: self, action: #selector(showSortActions))
 
+        // NavigationBar
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.backgroundColor = UIColor(named: "Green 2")
+            navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
         } else {
             // Fallback on earlier versions
+            navigationController?.navigationBar.backgroundColor = UIColor(hexString: "00B156")
+            navigationController?.navigationBar.barTintColor = UIColor(hexString: "00B156")
         }
-        navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        } else {
+            // Fallback on earlier versions
+        }
 
-        //        navigationController?.navigationBar.setColors(background: UIColor(hexString: "7CE2FF"), text: UIColor.whi)
-
-        navigationItem.searchController = UISearchController(searchResultsController: nil)
-        self.definesPresentationContext = true
-
-        navigationItem.searchController?.searchResultsUpdater = self
-        navigationItem.searchController?.dimsBackgroundDuringPresentation = false
-        //        navigationItem.searchController?.hidesNavigationBarDuringPresentation = true
-
-        navigationItem.searchController?.searchBar.sizeToFit()
-        navigationItem.searchController?.searchBar.placeholder = "搜尋店家名稱、地址"
-        navigationItem.searchController?.searchBar.tintColor = .white
-        navigationItem.searchController?.searchBar.delegate = self
-        navigationItem.hidesSearchBarWhenScrolling = true
+        // SearchController
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.placeholder = "搜尋店家名稱、地址"
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+//        searchController.hidesNavigationBarDuringPresentation = true
+        definesPresentationContext = true
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
+        } else {
+            // Fallback on earlier versions
+            searchController.searchBar.barTintColor = UIColor(hexString: "00B156")
+            tableView.tableHeaderView = searchController.searchBar
+        }
     }
 
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .white
+        tableView.refreshControl = refreshControl
+        tableView.refreshControl?.addTarget(self, action: #selector(getJSON), for: .valueChanged)
     }
 
-    func getJSON() {
+    @objc func getJSON() {
         requestManager.getYilanCafe { [weak self] (cafes) in
             guard let strongSelf = self else { return }
             strongSelf.cafes = cafes
-            strongSelf.tableView.reloadData()
+            strongSelf.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: {
+                strongSelf.tableView.reloadData()
+            })
         }
     }
 
@@ -168,12 +190,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if navigationItem.searchController!.isActive {
+        if searchController.isActive {
             return searchResult.count
         } else {
             return cafes.count
         }
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -184,7 +205,7 @@ extension HomeViewController: UITableViewDataSource {
 
         cell.indexPath = indexPath
 
-        if navigationItem.searchController!.isActive {
+        if searchController.isActive {
             let cafe = searchResult[indexPath.row]
             cell.cafe = cafe
         } else {
@@ -200,7 +221,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if navigationItem.searchController!.isActive {
+        if searchController.isActive {
             let cafe = searchResult[indexPath.row]
             if let url = URL(string: cafe.url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)

@@ -30,8 +30,15 @@ class MapViewController: UIViewController {
     }
 
     func setupNavigationBar() {
-        navigationController?.navigationBar.backgroundColor = UIColor(named: "Green 2")
-        navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.backgroundColor = UIColor(named: "Green 2")
+            navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
+        } else {
+            // Fallback on earlier versions
+            navigationController?.navigationBar.backgroundColor = UIColor(hexString: "00B156")
+            navigationController?.navigationBar.barTintColor = UIColor(hexString: "00B156")
+        }
+
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
