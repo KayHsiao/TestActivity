@@ -94,6 +94,8 @@ class HomeViewController: UIViewController {
         refreshControl.tintColor = .white
         tableView.refreshControl = refreshControl
         tableView.refreshControl?.addTarget(self, action: #selector(getJSON), for: .valueChanged)
+
+        tableView.register(nibWithCellClass: CafeTableViewCell.self)
     }
 
     @objc func getJSON() {
@@ -239,7 +241,21 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: CafeTableViewCellDelegate {
 
     func didClickCollectButton(_ sender: UIButton, at indexPath: IndexPath) {
-        //
+        var cafe: Cafe
+        if searchController.isActive {
+            cafe = searchResult[indexPath.row]
+        } else {
+            cafe = cafes[indexPath.row]
+        }
+
+        let isCollected = UserDefaults.standard.bool(forKey: cafe.id)
+        if isCollected {
+            UserDefaults.standard.set(false, forKey: cafe.id)
+        } else {
+            UserDefaults.standard.set(true, forKey: cafe.id)
+        }
+        UserDefaults.standard.synchronize()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
 }

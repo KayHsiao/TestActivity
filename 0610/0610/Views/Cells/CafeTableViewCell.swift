@@ -126,6 +126,11 @@ class CafeTableViewCell: UITableViewCell {
                     musicStarLabel.textColor = cafe.music == 5 ? UIColor(hexString: "F1C84B") : UIColor(hexString: "333333")
                     musicStarLabel.textColor = cafe.music == 1 ? UIColor(hexString: "EB5757") : musicStarLabel.textColor
                 }
+
+
+
+                let isCollected = UserDefaults.standard.bool(forKey: cafe.id)
+                collectButton.isSelected = isCollected ? true : false
             }
         }
     }
@@ -202,7 +207,7 @@ class CafeTableViewCell: UITableViewCell {
         cardView.layer.masksToBounds = false
 
         collectButton.setImage(UIImage(named: "youhui")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        collectButton.setImage(UIImage(named: "speaker")?.withRenderingMode(.alwaysTemplate), for: .selected)
+        collectButton.setImage(UIImage(named: "xinxi")?.withRenderingMode(.alwaysTemplate), for: .selected)
         collectButton.tintColor = .white
 
 

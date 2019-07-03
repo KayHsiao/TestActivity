@@ -40,6 +40,8 @@
 		83ABE71E22BCDE88007B04FB /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83ABE71D22BCDE88007B04FB /* Keys.plist */; };
 		83B60DE722C618FF00C49C58 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */; };
 		83BCCD1B22C9C4B5007EFD14 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BCCD1A22C9C4B5007EFD14 /* Cafe.swift */; };
+		83C479A022CCAADB0075C9A1 /* MyCollectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C4799F22CCAADB0075C9A1 /* MyCollectedViewController.swift */; };
+		83C479A622CCAD0D0075C9A1 /* CafeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C479A422CCAD0D0075C9A1 /* CafeTableViewCell.xib */; };
 		83DA91FA22B733CA00F85385 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA91F822B733CA00F85385 /* RouteTableViewCell.swift */; };
 		83DA91FB22B733CA00F85385 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83DA91F922B733CA00F85385 /* RouteTableViewCell.xib */; };
 		83DA91FE22B737D200F85385 /* PayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA91FC22B737D200F85385 /* PayTableViewCell.swift */; };
@@ -94,6 +96,8 @@
 		83ABE71D22BCDE88007B04FB /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeTableViewCell.swift; sourceTree = "<group>"; };
 		83BCCD1A22C9C4B5007EFD14 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		83C4799F22CCAADB0075C9A1 /* MyCollectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectedViewController.swift; sourceTree = "<group>"; };
+		83C479A422CCAD0D0075C9A1 /* CafeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CafeTableViewCell.xib; sourceTree = "<group>"; };
 		83DA91F822B733CA00F85385 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		83DA91F922B733CA00F85385 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
 		83DA91FC22B737D200F85385 /* PayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				8381389822AF62DB0029683F /* HomeViewController.swift */,
 				830BF11422CB0537001621DA /* MapViewController.swift */,
 				838138A022AF63950029683F /* SettingViewController.swift */,
+				83C4799F22CCAADB0075C9A1 /* MyCollectedViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 		83E26ADE22AFA2F90080CBA4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				83C479A422CCAD0D0075C9A1 /* CafeTableViewCell.xib */,
 				83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */,
 				8340704C22B383DC00F642F4 /* BannerTableViewCell.xib */,
 				8340704B22B383DC00F642F4 /* BannerTableViewCell.swift */,
@@ -356,6 +362,7 @@
 				8340704E22B383DC00F642F4 /* BannerTableViewCell.xib in Resources */,
 				83DA91FB22B733CA00F85385 /* RouteTableViewCell.xib in Resources */,
 				836811E222B8E5A900FAC2A9 /* TypeFourTableViewCell.xib in Resources */,
+				83C479A622CCAD0D0075C9A1 /* CafeTableViewCell.xib in Resources */,
 				83E26AE222AFA3A00080CBA4 /* ImageSectionView.xib in Resources */,
 				83DA920322B7388300F85385 /* FunctionCollectionViewCell.xib in Resources */,
 				83DA91FF22B737D200F85385 /* PayTableViewCell.xib in Resources */,
@@ -434,6 +441,7 @@
 				836811E122B8E5A900FAC2A9 /* TypeFourTableViewCell.swift in Sources */,
 				8381389922AF62DB0029683F /* HomeViewController.swift in Sources */,
 				83E26AE522AFB05A0080CBA4 /* ImageTableViewCell.swift in Sources */,
+				83C479A022CCAADB0075C9A1 /* MyCollectedViewController.swift in Sources */,
 				83DA920622B738A800F85385 /* ButtonTableViewCell.swift in Sources */,
 				8381389722AF51F50029683F /* RequestManager.swift in Sources */,
 				8341C8F322AE42F50070EBA0 /* MainTabBarController.swift in Sources */,

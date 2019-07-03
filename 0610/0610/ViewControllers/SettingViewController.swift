@@ -12,6 +12,8 @@ class SettingViewController: UIViewController {
 
     var vcType: MyViewControllerType!
 
+    let selectedBackgroundView = UIView()
+
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -38,6 +40,13 @@ class SettingViewController: UIViewController {
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+
+        if #available(iOS 11.0, *) {
+            selectedBackgroundView.backgroundColor = UIColor(named: "Green 3")
+        } else {
+            // Fallback on earlier versions
+            selectedBackgroundView.backgroundColor = UIColor(hexString: "41D192")
+        }
     }
 
 }
@@ -54,10 +63,20 @@ extension SettingViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if indexPath.row == 0 {
+        
+        switch indexPath.row {
+        case 0:
             cell.textLabel?.text = "我的收藏"
             cell.accessoryType = .disclosureIndicator
+        case 1:
+            cell.textLabel?.text = "隱私權政策"
+            cell.accessoryType = .disclosureIndicator
+        default:
+            break
         }
+
+        cell.selectedBackgroundView = selectedBackgroundView
+
         return cell
     }
 
@@ -73,7 +92,10 @@ extension SettingViewController: UITableViewDataSource {
 extension SettingViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let myCollectedVC = UIStoryboard.main?.instantiateViewController(withIdentifier: "MyCollectedViewController") as! MyCollectedViewController
+        navigationController?.pushViewController(myCollectedVC)
     }
 
 }
