@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import Kingfisher
+//import Kingfisher
 import SwifterSwift
+import Alamofire
+import AlamofireImage
 
 protocol ImageSectionViewDelegate: class {
     func sectionView(_ sectionView: ImageSectionView, _ didPressTag: Int, _ isExpand: Bool)
@@ -24,27 +26,45 @@ class ImageSectionView: UITableViewHeaderFooterView {
     var imageStr: String? {
         didSet {
             if let imageStr = imageStr, let url = URL(string: imageStr) {
-                let processor = DownsamplingImageProcessor(size: sectionImageView.frame.size)
+                //
+                //                let imageView = UIImageView(frame: frame)
+                //                let placeholderImage = UIImage(named: "placeholder")!
 
-                sectionImageView.kf.indicatorType = .activity
-                sectionImageView.kf.setImage(
-                    with: url,
-                    placeholder: nil,
-                    options: [
-                        .processor(processor),
-                        .scaleFactor(UIScreen.main.scale),
-                        .transition(.fade(1)),
-                        .cacheOriginalImage
-                    ])
-                {
-                    result in
-                    switch result {
-                    case .success(let value):
-                        log.info("Task done for: \(value.source.url?.absoluteString ?? "")")
-                    case .failure(let error):
-                        log.error("Job failed: \(error.localizedDescription)")
-                    }
-                }
+                let filter = ScaledToSizeFilter(size: sectionImageView.frame.size)
+
+                //                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+                //                    size: cellImageView.frame.size,
+                //                    radius: 20.0
+                //                )
+
+                sectionImageView.af_setImage(
+                    withURL: url,
+                    placeholderImage: nil,
+                    filter: filter,
+                    imageTransition: .crossDissolve(0.2)
+                )
+
+//                let processor = DownsamplingImageProcessor(size: sectionImageView.frame.size)
+//
+//                sectionImageView.kf.indicatorType = .activity
+//                sectionImageView.kf.setImage(
+//                    with: url,
+//                    placeholder: nil,
+//                    options: [
+//                        .processor(processor),
+//                        .scaleFactor(UIScreen.main.scale),
+//                        .transition(.fade(1)),
+//                        .cacheOriginalImage
+//                    ])
+//                {
+//                    result in
+//                    switch result {
+//                    case .success(let value):
+//                        log.info("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                    case .failure(let error):
+//                        log.error("Job failed: \(error.localizedDescription)")
+//                    }
+//                }
             } else {
                 sectionImageView.image = nil
             }

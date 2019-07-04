@@ -37,12 +37,23 @@ class MainTabBarController: UITabBarController {
         requestManager.getActivitys(success: { [weak self] (json) in
             log.info(json)
 
-            let tintColorHex = json["tintColor"].stringValue
-            self?.tabBar.tintColor = UIColor(hexString: tintColorHex)
-            let tabBarColorHex = json["tabBarColor"].stringValue
-            self?.tabBar.barTintColor = UIColor(hexString: tabBarColorHex)
-            let unSelectedTabBarColorHex = json["unSelectedTabBarColor"].stringValue
-            self?.tabBar.unselectedItemTintColor = UIColor(hexString: unSelectedTabBarColorHex)
+
+            if #available(iOS 10.0, *) {
+                let tintColorHex = json["tintColor"].stringValue
+                self?.tabBar.tintColor = UIColor(hexString: tintColorHex)
+                let tabBarColorHex = json["tabBarColor"].stringValue
+                self?.tabBar.barTintColor = UIColor(hexString: tabBarColorHex)
+                let unSelectedTabBarColorHex = json["unSelectedTabBarColor"].stringValue
+                self?.tabBar.unselectedItemTintColor = UIColor(hexString: unSelectedTabBarColorHex)
+            } else {
+                // Fallback on earlier versions
+                let tintColorHex = json["tintColor"].stringValue
+                self?.tabBar.tintColor = UIColor(hexString: tintColorHex)
+                let tabBarColorHex = json["tabBarColor"].stringValue
+                self?.tabBar.barTintColor = UIColor(hexString: tabBarColorHex)
+//                let unSelectedTabBarColorHex = json["unSelectedTabBarColor"].stringValue
+//                self?.tabBar.unselectedItemTintColor = UIColor(hexString: unSelectedTabBarColorHex)
+            }
 
             let list = json["list"].arrayValue
             for activity in list {

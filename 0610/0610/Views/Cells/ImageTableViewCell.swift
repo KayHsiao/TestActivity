@@ -7,7 +7,9 @@
 //
 
 import UIKit
-import Kingfisher
+//import Kingfisher
+import Alamofire
+import AlamofireImage
 
 protocol ImageTableViewCellDelegate: class {
     func imageTableViewCell(_ cell: ImageTableViewCell, didPressIndexPath indexPath: IndexPath, _ isExpand: Bool)
@@ -25,27 +27,46 @@ class ImageTableViewCell: UITableViewCell {
     var imageStr: String? {
         didSet {
             if let imageStr = imageStr, let url = URL(string: imageStr) {
-                let processor = DownsamplingImageProcessor(size: cellImageView.frame.size)
+//
+//                let imageView = UIImageView(frame: frame)
+//                let placeholderImage = UIImage(named: "placeholder")!
 
-                cellImageView.kf.indicatorType = .activity
-                cellImageView.kf.setImage(
-                    with: url,
-                    placeholder: nil,
-                    options: [
-                        .processor(processor),
-                        .scaleFactor(UIScreen.main.scale),
-                        .transition(.fade(1)),
-                        .cacheOriginalImage
-                    ])
-                {
-                    result in
-                    switch result {
-                    case .success(let value):
-                        log.info("Task done for: \(value.source.url?.absoluteString ?? "")")
-                    case .failure(let error):
-                        log.error("Job failed: \(error.localizedDescription)")
-                    }
-                }
+                let filter = ScaledToSizeFilter(size: cellImageView.frame.size)
+
+//                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+//                    size: cellImageView.frame.size,
+//                    radius: 20.0
+//                )
+
+                cellImageView.af_setImage(
+                    withURL: url,
+                    placeholderImage: nil,
+                    filter: filter,
+                    imageTransition: .crossDissolve(0.2)
+                )
+
+
+//                let processor = DownsamplingImageProcessor(size: cellImageView.frame.size)
+//
+//                cellImageView.kf.indicatorType = .activity
+//                cellImageView.kf.setImage(
+//                    with: url,
+//                    placeholder: nil,
+//                    options: [
+//                        .processor(processor),
+//                        .scaleFactor(UIScreen.main.scale),
+//                        .transition(.fade(1)),
+//                        .cacheOriginalImage
+//                    ])
+//                {
+//                    result in
+//                    switch result {
+//                    case .success(let value):
+//                        log.info("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                    case .failure(let error):
+//                        log.error("Job failed: \(error.localizedDescription)")
+//                    }
+//                }
             } else {
                 cellImageView.image = nil
             }

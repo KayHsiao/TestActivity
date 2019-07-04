@@ -7,34 +7,55 @@
 //
 
 import UIKit
-import Kingfisher
+//import Kingfisher
+import Alamofire
+import AlamofireImage
 
 class ButtonCollectionViewCell: UICollectionViewCell {
 
     var imageStr: String? {
         didSet {
             if let imageStr = imageStr, let url = URL(string: imageStr) {
-                let processor = DownsamplingImageProcessor(size: imageView.frame.size)
 
-                imageView.kf.indicatorType = .activity
-                imageView.kf.setImage(
-                    with: url,
-                    placeholder: nil,
-                    options: [
-                        .processor(processor),
-                        .scaleFactor(UIScreen.main.scale),
-                        .transition(.fade(1)),
-                        .cacheOriginalImage
-                    ])
-                {
-                    result in
-                    switch result {
-                    case .success(let value):
-                        log.info("Task done for: \(value.source.url?.absoluteString ?? "")")
-                    case .failure(let error):
-                        log.error("Job failed: \(error.localizedDescription)")
-                    }
-                }
+                //
+                //                let imageView = UIImageView(frame: frame)
+                //                let placeholderImage = UIImage(named: "placeholder")!
+
+                let filter = ScaledToSizeFilter(size: imageView.frame.size)
+
+                //                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+                //                    size: cellImageView.frame.size,
+                //                    radius: 20.0
+                //                )
+
+                imageView.af_setImage(
+                    withURL: url,
+                    placeholderImage: nil,
+                    filter: filter,
+                    imageTransition: .crossDissolve(0.2)
+                )
+
+//                let processor = DownsamplingImageProcessor(size: imageView.frame.size)
+//
+//                imageView.kf.indicatorType = .activity
+//                imageView.kf.setImage(
+//                    with: url,
+//                    placeholder: nil,
+//                    options: [
+//                        .processor(processor),
+//                        .scaleFactor(UIScreen.main.scale),
+//                        .transition(.fade(1)),
+//                        .cacheOriginalImage
+//                    ])
+//                {
+//                    result in
+//                    switch result {
+//                    case .success(let value):
+//                        log.info("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                    case .failure(let error):
+//                        log.error("Job failed: \(error.localizedDescription)")
+//                    }
+//                }
             } else {
                 imageView.image = nil
             }

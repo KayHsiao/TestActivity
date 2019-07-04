@@ -8,10 +8,12 @@
 
 import UIKit
 import SwiftyJSON
-import Kingfisher
+//import Kingfisher
 import SwifterSwift
 import MarqueeLabel
 import AVFoundation
+import Alamofire
+import AlamofireImage
 
 class MIxViewController: UIViewController {
 
@@ -38,28 +40,46 @@ class MIxViewController: UIViewController {
 
             if let navImageStr = navImageStr, let url = URL(string: navImageStr) {
 
-                let processor = DownsamplingImageProcessor(size: navImageView.frame.size)
+                //
+                //                let imageView = UIImageView(frame: frame)
+                //                let placeholderImage = UIImage(named: "placeholder")!
 
-                navImageView.kf.indicatorType = .activity
-                navImageView.kf.setImage(
-                    with: url,
-                    placeholder: nil,
-                    options: [
-                        .processor(processor),
-                        .scaleFactor(UIScreen.main.scale),
-                        .transition(.fade(1)),
-                        .cacheOriginalImage
-                    ])
-                {
-                    result in
-                    switch result {
-                    case .success(let value):
-                        print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                        self.navigationItem.titleView = navImageView
-                    case .failure(let error):
-                        print("Job failed: \(error.localizedDescription)")
-                    }
-                }
+                let filter = ScaledToSizeFilter(size: navImageView.frame.size)
+
+                //                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+                //                    size: cellImageView.frame.size,
+                //                    radius: 20.0
+                //                )
+
+                navImageView.af_setImage(
+                    withURL: url,
+                    placeholderImage: nil,
+                    filter: filter,
+                    imageTransition: .crossDissolve(0.2)
+                )
+
+//                let processor = DownsamplingImageProcessor(size: navImageView.frame.size)
+//
+//                navImageView.kf.indicatorType = .activity
+//                navImageView.kf.setImage(
+//                    with: url,
+//                    placeholder: nil,
+//                    options: [
+//                        .processor(processor),
+//                        .scaleFactor(UIScreen.main.scale),
+//                        .transition(.fade(1)),
+//                        .cacheOriginalImage
+//                    ])
+//                {
+//                    result in
+//                    switch result {
+//                    case .success(let value):
+//                        print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                        self.navigationItem.titleView = navImageView
+//                    case .failure(let error):
+//                        print("Job failed: \(error.localizedDescription)")
+//                    }
+//                }
             } else {
 //                navImageView.image = UIImage(named: "navPlaceholder")
                 navImageView.image = nil
@@ -593,7 +613,12 @@ extension MIxViewController: ImageTableViewCellDelegate {
             let content = cellModels[indexPath.section]
 
             if let infoWeb = (content as! TypeSix).contents[0].infoWeb, let url = URL(string: infoWeb) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                    UIApplication.shared.openURL(url)
+                }
             }
         }
     }

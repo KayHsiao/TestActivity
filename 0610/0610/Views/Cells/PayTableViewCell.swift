@@ -56,19 +56,34 @@ class PayTableViewCell: UITableViewCell {
 
     @IBAction func clickLeftViewButton(_ sender: UIButton) {
         if let contents = cellModels, let aliPayWebURLStr = contents[0].textWeb, let url = URL(string: aliPayWebURLStr) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
         }
     }
 
     @IBAction func clickMiddleViewButton(_ sender: UIButton) {
         if let contents = cellModels, let weChatWebURLStr = contents[1].textWeb, let url = URL(string: weChatWebURLStr) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
         }
     }
 
     @IBAction func clickRightViewButton(_ sender: UIButton) {
         if let contents = cellModels, let fastPayWebURLStr = contents[2].textWeb, let url = URL(string: fastPayWebURLStr) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
         }
     }
 

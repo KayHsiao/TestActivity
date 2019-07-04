@@ -40,7 +40,12 @@ class ButtonTableViewCell: UITableViewCell {
 
     @IBAction func clickButton(_ sender: UIButton) {
         if let webStr = webStr, let url = URL(string: webStr) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+            }
         }
     }
 

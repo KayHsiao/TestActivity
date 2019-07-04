@@ -94,8 +94,23 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let myCollectedVC = UIStoryboard.main?.instantiateViewController(withIdentifier: "MyCollectedViewController") as! MyCollectedViewController
-        navigationController?.pushViewController(myCollectedVC)
+        switch indexPath.row {
+        case 0:
+            let myCollectedVC = UIStoryboard.main?.instantiateViewController(withIdentifier: "MyCollectedViewController") as! MyCollectedViewController
+            navigationController?.pushViewController(myCollectedVC)
+        case 1:
+            if let url = URL(string: "https://www.privacypolicies.com/privacy/view/83496ea793b852bb13f0f53d58711c6e") {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        default:
+            break
+        }
+
+
     }
 
 }

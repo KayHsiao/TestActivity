@@ -8,7 +8,7 @@
 
 import UIKit
 import MarqueeLabel
-import JXMarqueeView
+//import JXMarqueeView
 
 class BannerTableViewCell: UITableViewCell {
 

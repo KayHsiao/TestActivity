@@ -92,8 +92,13 @@ class HomeViewController: UIViewController {
 
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = .white
-        tableView.refreshControl = refreshControl
-        tableView.refreshControl?.addTarget(self, action: #selector(getJSON), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(getJSON), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            // Fallback on earlier versions
+            tableView.addSubview(refreshControl)
+        }
 
         tableView.register(nibWithCellClass: CafeTableViewCell.self)
     }
@@ -102,7 +107,12 @@ class HomeViewController: UIViewController {
         requestManager.getYilanCafe { [weak self] (cafes) in
             guard let strongSelf = self else { return }
             strongSelf.cafes = cafes
-            strongSelf.tableView.refreshControl?.endRefreshing()
+            if #available(iOS 10.0, *) {
+                strongSelf.tableView.refreshControl?.endRefreshing()
+            } else {
+                // Fallback on earlier versions
+                strongSelf.refreshControl.endRefreshing()
+            }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: {
                 strongSelf.tableView.reloadData()
             })
@@ -226,12 +236,22 @@ extension HomeViewController: UITableViewDelegate {
         if searchController.isActive {
             let cafe = searchResult[indexPath.row]
             if let url = URL(string: cafe.url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                    UIApplication.shared.openURL(url)
+                }
             }
         } else {
             let cafe = cafes[indexPath.row]
             if let url = URL(string: cafe.url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                    UIApplication.shared.openURL(url)
+                }
             }
         }
     }
