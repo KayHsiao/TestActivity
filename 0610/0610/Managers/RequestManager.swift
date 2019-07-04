@@ -149,7 +149,7 @@ extension RequestManager {
         baseRequest(.get, url: AppAPI.popular, parameters: nil, needToken: false, callback: success)
     }
 
-    /// 活动优惠
+    ///
     func getHot(success: @escaping (_ data: JSON) -> Void) {
         baseRequest(.get, url: AppAPI.hot, parameters: nil, needToken: false, callback: success)
     }

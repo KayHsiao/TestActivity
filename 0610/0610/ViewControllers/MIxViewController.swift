@@ -11,6 +11,7 @@ import SwiftyJSON
 import Kingfisher
 import SwifterSwift
 import MarqueeLabel
+import AVFoundation
 
 class MIxViewController: UIViewController {
 
@@ -290,6 +291,30 @@ class MIxViewController: UIViewController {
         }
     }
 
+    func calculateImageTableViewCellHeight(with urlStr: String?) -> CGFloat {
+        if let urlStr = urlStr, let url = URL(string: urlStr) {
+            if let imageHeight = UserDefaults.standard.float(forKey: "ImageH \(urlStr)") {
+                return CGFloat(imageHeight)
+            } else {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let resultImage = UIImage(data: data)
+                    let resultBoundingRect =  CGRect(x: 0, y: 0, width: self.view.frame.width, height: CGFloat(MAXFLOAT))
+                    let resultRect  = AVMakeRect(aspectRatio: CGSize(width: (resultImage?.size.width)!, height: (resultImage?.size.height)!), insideRect: resultBoundingRect)
+                    let resultImageHeight = resultRect.height
+                    log.info("resultImageHeight:\(resultImageHeight)")
+                    UserDefaults.standard.set(Float(resultImageHeight), forKey: "ImageH \(urlStr)")
+                    return resultImageHeight
+                } catch {
+                    log.debug(error.localizedDescription)
+                    return 200
+                }
+            }
+        } else {
+            return 200
+        }
+    }
+
 }
 
 // MARK: - UITableView DataSource
@@ -535,7 +560,7 @@ extension MIxViewController: UITableViewDelegate, UIScrollViewDelegate {
             return 81
 
         case is TypeSix:
-            return indexPath.row == 0 ? 100 : 200
+            return indexPath.row == 0 ? 100 : calculateImageTableViewCellHeight(with: (content as! TypeSix).contents.first?.infoImage)
 
         case is TypeSeven:
             let width = (tableView.frame.size.width - 2) / 3
