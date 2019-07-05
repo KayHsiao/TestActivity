@@ -24,24 +24,22 @@ class MapViewController: UIViewController {
         getJSON()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyTheme()
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.barStyle = .black
     }
 
     func setupNavigationBar() {
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.backgroundColor = UIColor(named: "Green 2")
-            navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
-        } else {
-            // Fallback on earlier versions
-            navigationController?.navigationBar.backgroundColor = UIColor(hexString: "00B156")
-            navigationController?.navigationBar.barTintColor = UIColor(hexString: "00B156")
-        }
-
+        navigationController?.navigationBar.backgroundColor = Theme.current.navigationBar
+        navigationController?.navigationBar.barTintColor = Theme.current.navigationBar
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = Theme.current.tint
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.tint]
     }
 
     func setupMapView() {
@@ -59,6 +57,14 @@ class MapViewController: UIViewController {
             strongSelf.cafes = cafes
             strongSelf.showCafes()
         }
+    }
+
+    fileprivate func applyTheme() {
+        self.setupNavigationBar()
+
+        self.tabBarController?.tabBar.barTintColor = Theme.current.tabBar
+        self.tabBarController?.tabBar.tintColor = Theme.current.tint
+        self.tabBarController?.tabBar.unselectedItemTintColor = Theme.current.tabBarUnSelected
     }
 
     func showCafes() {

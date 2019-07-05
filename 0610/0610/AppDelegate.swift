@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        applyTheme()
         setupSwiftyBeaver()
         return true
     }
@@ -48,6 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
+
+    func applyTheme() {
+        if UserDefaults.standard.object(forKey: "kIsDarkTheme") == nil {
+            UserDefaults.standard.set(false, forKey: "kIsDarkTheme")
+        }
+    }
 
     func setupSwiftyBeaver() {
         // add log destinations. at least one is needed!

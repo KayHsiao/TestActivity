@@ -11,6 +11,11 @@
 		830BF11322CB047A001621DA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830BF11222CB047A001621DA /* MapKit.framework */; };
 		830BF11522CB0537001621DA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830BF11422CB0537001621DA /* MapViewController.swift */; };
 		830BF11722CB32E0001621DA /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 830BF11622CB32E0001621DA /* Colors.xcassets */; };
+		8322687622CEF4B000871323 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322687522CEF4B000871323 /* SwitchTableViewCell.swift */; };
+		8322687822CEFF7100871323 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322687722CEFF7100871323 /* Theme.swift */; };
+		8322687B22CF029100871323 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322687A22CF029100871323 /* ThemeProtocol.swift */; };
+		8322687D22CF032D00871323 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322687C22CF032D00871323 /* LightTheme.swift */; };
+		8322687F22CF03E600871323 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8322687E22CF03E600871323 /* DarkTheme.swift */; };
 		8340704322B37B4A00F642F4 /* LLViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340703B22B37B4900F642F4 /* LLViewExtensions.swift */; };
 		8340704422B37B4A00F642F4 /* LLPillPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340703C22B37B4900F642F4 /* LLPillPageControl.swift */; };
 		8340704522B37B4A00F642F4 /* LLCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340703D22B37B4900F642F4 /* LLCycleScrollView.swift */; };
@@ -37,7 +42,7 @@
 		836A7D7622CDB75500C53FE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A7D7522CDB75400C53FE1 /* Constants.swift */; };
 		8381389722AF51F50029683F /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381389622AF51F50029683F /* RequestManager.swift */; };
 		8381389922AF62DB0029683F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381389822AF62DB0029683F /* HomeViewController.swift */; };
-		838138A122AF63950029683F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838138A022AF63950029683F /* SettingViewController.swift */; };
+		838138A122AF63950029683F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838138A022AF63950029683F /* SettingsViewController.swift */; };
 		8382C1A122B1EEB10055CCD4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382C1A022B1EEB10055CCD4 /* Activity.swift */; };
 		83ABE71E22BCDE88007B04FB /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83ABE71D22BCDE88007B04FB /* Keys.plist */; };
 		83B60DE722C618FF00C49C58 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */; };
@@ -67,6 +72,11 @@
 		830BF11222CB047A001621DA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		830BF11422CB0537001621DA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		830BF11622CB32E0001621DA /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		8322687522CEF4B000871323 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		8322687722CEFF7100871323 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8322687A22CF029100871323 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		8322687C22CF032D00871323 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
+		8322687E22CF03E600871323 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
 		8340703B22B37B4900F642F4 /* LLViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLViewExtensions.swift; sourceTree = "<group>"; };
 		8340703C22B37B4900F642F4 /* LLPillPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLPillPageControl.swift; sourceTree = "<group>"; };
 		8340703D22B37B4900F642F4 /* LLCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLCycleScrollView.swift; sourceTree = "<group>"; };
@@ -95,7 +105,7 @@
 		836A7D7522CDB75400C53FE1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8381389622AF51F50029683F /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		8381389822AF62DB0029683F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		838138A022AF63950029683F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		838138A022AF63950029683F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8382C1A022B1EEB10055CCD4 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		83ABE71D22BCDE88007B04FB /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +166,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8322687922CEFF7900871323 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				8322687A22CF029100871323 /* ThemeProtocol.swift */,
+				8322687722CEFF7100871323 /* Theme.swift */,
+				8322687C22CF032D00871323 /* LightTheme.swift */,
+				8322687E22CF03E600871323 /* DarkTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		8340703922B37B4900F642F4 /* 3rd lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +228,7 @@
 				8382C19F22B1EDFF0055CCD4 /* Models */,
 				83E26AE022AFA31F0080CBA4 /* Managers */,
 				8340703922B37B4900F642F4 /* 3rd lib */,
+				8322687922CEFF7900871323 /* Theme */,
 				83CE5F1F22AF6903006CCA03 /* Supporting Files */,
 			);
 			path = 0610;
@@ -225,8 +247,8 @@
 		83CE5F1F22AF6903006CCA03 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8341C8E722AE40DA0070EBA0 /* ImageAssets.xcassets */,
 				830BF11622CB32E0001621DA /* Colors.xcassets */,
+				8341C8E722AE40DA0070EBA0 /* ImageAssets.xcassets */,
 				8341C8E922AE40DA0070EBA0 /* LaunchScreen.storyboard */,
 				8341C8EC22AE40DA0070EBA0 /* Info.plist */,
 				83ABE71D22BCDE88007B04FB /* Keys.plist */,
@@ -243,7 +265,7 @@
 				8341C8F422AE4A830070EBA0 /* MIxViewController.swift */,
 				8381389822AF62DB0029683F /* HomeViewController.swift */,
 				830BF11422CB0537001621DA /* MapViewController.swift */,
-				838138A022AF63950029683F /* SettingViewController.swift */,
+				838138A022AF63950029683F /* SettingsViewController.swift */,
 				83C4799F22CCAADB0075C9A1 /* MyCollectedViewController.swift */,
 			);
 			path = ViewControllers;
@@ -252,6 +274,7 @@
 		83E26ADE22AFA2F90080CBA4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				8322687522CEF4B000871323 /* SwitchTableViewCell.swift */,
 				83C479A422CCAD0D0075C9A1 /* CafeTableViewCell.xib */,
 				83B60DE622C618FF00C49C58 /* CafeTableViewCell.swift */,
 				8340704C22B383DC00F642F4 /* BannerTableViewCell.xib */,
@@ -431,6 +454,7 @@
 			files = (
 				836811F722BB6B6800FAC2A9 /* ActivityCellContent.swift in Sources */,
 				8340704722B37B4A00F642F4 /* LLCycleScrollViewCell.swift in Sources */,
+				8322687622CEF4B000871323 /* SwitchTableViewCell.swift in Sources */,
 				836A7D7422CDAE5400C53FE1 /* ImageManager.swift in Sources */,
 				83DA91FA22B733CA00F85385 /* RouteTableViewCell.swift in Sources */,
 				8340704322B37B4A00F642F4 /* LLViewExtensions.swift in Sources */,
@@ -438,17 +462,20 @@
 				83DA920A22B8938E00F85385 /* TypeSevenTableViewCell.swift in Sources */,
 				836A7D7622CDB75500C53FE1 /* Constants.swift in Sources */,
 				83DD456D22B22F8100514557 /* ButtonCollectionViewCell.swift in Sources */,
+				8322687B22CF029100871323 /* ThemeProtocol.swift in Sources */,
 				8340704522B37B4A00F642F4 /* LLCycleScrollView.swift in Sources */,
+				8322687F22CF03E600871323 /* DarkTheme.swift in Sources */,
 				8341C8E122AE40D90070EBA0 /* AppDelegate.swift in Sources */,
 				83E26ADD22AFA2F20080CBA4 /* ImageSectionView.swift in Sources */,
 				83BCCD1B22C9C4B5007EFD14 /* Cafe.swift in Sources */,
 				8382C1A122B1EEB10055CCD4 /* Activity.swift in Sources */,
 				83B60DE722C618FF00C49C58 /* CafeTableViewCell.swift in Sources */,
-				838138A122AF63950029683F /* SettingViewController.swift in Sources */,
+				838138A122AF63950029683F /* SettingsViewController.swift in Sources */,
 				8340704422B37B4A00F642F4 /* LLPillPageControl.swift in Sources */,
 				836811E122B8E5A900FAC2A9 /* TypeFourTableViewCell.swift in Sources */,
 				8381389922AF62DB0029683F /* HomeViewController.swift in Sources */,
 				83E26AE522AFB05A0080CBA4 /* ImageTableViewCell.swift in Sources */,
+				8322687D22CF032D00871323 /* LightTheme.swift in Sources */,
 				83C479A022CCAADB0075C9A1 /* MyCollectedViewController.swift in Sources */,
 				83DA920622B738A800F85385 /* ButtonTableViewCell.swift in Sources */,
 				8381389722AF51F50029683F /* RequestManager.swift in Sources */,
@@ -461,6 +488,7 @@
 				83DA91FE22B737D200F85385 /* PayTableViewCell.swift in Sources */,
 				830BF11522CB0537001621DA /* MapViewController.swift in Sources */,
 				8341C8F522AE4A830070EBA0 /* MIxViewController.swift in Sources */,
+				8322687822CEFF7100871323 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

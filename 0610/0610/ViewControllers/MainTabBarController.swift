@@ -10,9 +10,9 @@ import UIKit
 import SwiftyJSON
 
 enum MyViewControllerType: String {
-    case viewController0 = "所有活動" // recent.json
-    case viewController1 = "我的收藏"
-    case viewController2 = "設定"
+    case viewController0 = "宜蘭工作咖啡廳"
+    case viewController1 = "地圖"
+    case viewController2 = "我的"
     case viewController3 = "自定義介面0" // course.json
     case viewController4 = "自定義介面1" // party.json
     case viewController5 = "自定義介面2" // popular.json
@@ -81,7 +81,7 @@ class MainTabBarController: UITabBarController {
             case "ViewController0":
                 let homeVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
 
-                homeVC.navigationItem.title = "宜蘭工作咖啡廳"
+                homeVC.navigationItem.title = MyViewControllerType.viewController0.rawValue
 
                 let homeNav = UINavigationController.init(rootViewController: homeVC)
                 if #available(iOS 11.0, *) {
@@ -96,19 +96,19 @@ class MainTabBarController: UITabBarController {
 
             case "ViewController1":
                 let collectiveVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-                collectiveVC.navigationItem.title = "地圖"
+                collectiveVC.navigationItem.title = MyViewControllerType.viewController1.rawValue
                 let collectiveNav = UINavigationController.init(rootViewController: collectiveVC)
                 collectiveNav.tabBarItem.image = UIImage(named: "user")
-                collectiveNav.tabBarItem.title = "地圖"
+                collectiveNav.tabBarItem.title = MyViewControllerType.viewController1.rawValue
 
                 vcs.append(collectiveNav)
 
             case "ViewController2":
-                let settingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-                settingVC.navigationItem.title = "我的"
+                let settingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingsViewController
+                settingVC.navigationItem.title = MyViewControllerType.viewController2.rawValue
                 let settingNav = UINavigationController.init(rootViewController: settingVC)
                 settingNav.tabBarItem.image = UIImage(named: "heart")
-                settingNav.tabBarItem.title = "我的"
+                settingNav.tabBarItem.title = MyViewControllerType.viewController2.rawValue
 
                 vcs.append(settingNav)
 

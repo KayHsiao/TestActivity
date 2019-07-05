@@ -10,6 +10,8 @@ import UIKit
 
 class MyCollectedViewController: UIViewController {
 
+    let theme = Theme.current
+
     var cafes: [Cafe] = []
     var searchResult: [Cafe] = []
 
@@ -22,23 +24,22 @@ class MyCollectedViewController: UIViewController {
         getJSON()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyTheme()
+    }
+
     func setupNavigationBar() {
         // NavigationBar
         self.title = "我的收藏"
 
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.backgroundColor = UIColor(named: "Green 2")
-            navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
-        } else {
-            // Fallback on earlier versions
-            navigationController?.navigationBar.backgroundColor = UIColor(hexString: "00B156")
-            navigationController?.navigationBar.barTintColor = UIColor(hexString: "00B156")
-        }
+        navigationController?.navigationBar.backgroundColor = theme.navigationBar
+        navigationController?.navigationBar.barTintColor = theme.navigationBar
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = theme.tint
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.tint]
         if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.tint]
         } else {
             // Fallback on earlier versions
         }
@@ -70,6 +71,13 @@ class MyCollectedViewController: UIViewController {
         }
     }
 
+    fileprivate func applyTheme() {
+        tableView.backgroundColor = Theme.current.tableViewCellBackgorund
+        tableView.reloadData()
+
+        setupNavigationBar()
+    }
+
 }
 
 extension MyCollectedViewController: UITableViewDataSource {
@@ -88,6 +96,8 @@ extension MyCollectedViewController: UITableViewDataSource {
 
         let cafe = cafes[indexPath.row]
         cell.cafe = cafe
+
+        cell.applyTheme()
 
         return cell
     }

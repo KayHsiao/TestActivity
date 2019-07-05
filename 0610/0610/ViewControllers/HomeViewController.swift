@@ -39,50 +39,65 @@ class HomeViewController: UIViewController {
         getJSON()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.barStyle = .black
+        applyTheme()
     }
 
-    func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "xinxi"), style: .plain, target: self, action: #selector(showSortActions))
-
-        // NavigationBar
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.backgroundColor = UIColor(named: "Green 2")
-            navigationController?.navigationBar.barTintColor = UIColor(named: "Green 2")
-        } else {
-            // Fallback on earlier versions
-            navigationController?.navigationBar.backgroundColor = UIColor(hexString: "00B156")
-            navigationController?.navigationBar.barTintColor = UIColor(hexString: "00B156")
-        }
+    fileprivate func applyTheme() {
+        navigationController?.navigationBar.backgroundColor = Theme.current.navigationBar
+        navigationController?.navigationBar.barTintColor = Theme.current.navigationBar
+        navigationController?.navigationBar.tintColor = Theme.current.tint
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.tint]
         if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.tint]
         } else {
             // Fallback on earlier versions
         }
 
-        // SearchController
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.placeholder = "搜尋店家名稱、地址"
-        searchController.searchBar.tintColor = .white
-        searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-//        searchController.hidesNavigationBarDuringPresentation = true
-        definesPresentationContext = true
+        searchController.searchBar.tintColor = Theme.current.tint
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
         } else {
             // Fallback on earlier versions
-            searchController.searchBar.barTintColor = UIColor(hexString: "00B156")
+            searchController.searchBar.barTintColor = Theme.current.accent
             tableView.tableHeaderView = searchController.searchBar
         }
+
+        // Placeholder Customization
+//        let textFieldInsideSearchBarLabel = searchController.searchBar.value(forKey: "placeholderLabel") as? UILabel
+//        textFieldInsideSearchBarLabel?.textColor = Theme.current.tint
+
+
+        tableView.backgroundColor = Theme.current.tableViewCellBackgorund
+
+        tableView.reloadData()
+
+        self.tabBarController?.tabBar.barTintColor = Theme.current.tabBar
+        self.tabBarController?.tabBar.tintColor = Theme.current.tint
+        self.tabBarController?.tabBar.unselectedItemTintColor = Theme.current.tabBarUnSelected
+    }
+
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "xinxi"), style: .plain, target: self, action: #selector(showSortActions))
+
+        // SearchController
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.placeholder = "搜尋店家名稱、地址"
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+//        searchController.hidesNavigationBarDuringPresentation = true
+        definesPresentationContext = true
     }
 
     func setupTableView() {
@@ -224,6 +239,8 @@ extension HomeViewController: UITableViewDataSource {
             let cafe = cafes[indexPath.row]
             cell.cafe = cafe
         }
+
+        cell.applyTheme()
 
         return cell
     }
