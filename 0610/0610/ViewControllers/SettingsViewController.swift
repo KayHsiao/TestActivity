@@ -29,6 +29,8 @@ class SettingsViewController: UIViewController {
     }
 
     func setupNavigationBar() {
+        navigationController?.navigationBar.barStyle = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? .default : .black
+        
         navigationController?.navigationBar.backgroundColor = Theme.current.navigationBar
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBar
         navigationController?.navigationBar.isTranslucent = false

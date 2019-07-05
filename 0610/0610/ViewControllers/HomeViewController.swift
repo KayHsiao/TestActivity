@@ -41,16 +41,16 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barStyle = .black
         applyTheme()
     }
 
     fileprivate func applyTheme() {
+        navigationController?.navigationBar.barStyle = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? .default : .black
+
         navigationController?.navigationBar.backgroundColor = Theme.current.navigationBar
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBar
         navigationController?.navigationBar.tintColor = Theme.current.tint
@@ -130,6 +130,7 @@ class HomeViewController: UIViewController {
             }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: {
                 strongSelf.tableView.reloadData()
+                self?.applyTheme()
             })
         }
     }

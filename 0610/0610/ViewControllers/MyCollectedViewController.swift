@@ -33,6 +33,8 @@ class MyCollectedViewController: UIViewController {
         // NavigationBar
         self.title = "我的收藏"
 
+        navigationController?.navigationBar.barStyle = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? .default : .black
+
         navigationController?.navigationBar.backgroundColor = theme.navigationBar
         navigationController?.navigationBar.barTintColor = theme.navigationBar
         navigationController?.navigationBar.isTranslucent = false

@@ -53,6 +53,9 @@ extension AppDelegate {
     func applyTheme() {
         if UserDefaults.standard.object(forKey: "kIsDarkTheme") == nil {
             UserDefaults.standard.set(false, forKey: "kIsDarkTheme")
+            Theme.current = LightTheme()
+        } else {
+            Theme.current = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? DarkTheme() : LightTheme()
         }
     }
 

@@ -31,10 +31,11 @@ class MapViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.barStyle = .black
     }
 
     func setupNavigationBar() {
+        navigationController?.navigationBar.barStyle = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? .default : .black
+        
         navigationController?.navigationBar.backgroundColor = Theme.current.navigationBar
         navigationController?.navigationBar.barTintColor = Theme.current.navigationBar
         navigationController?.navigationBar.isTranslucent = false
