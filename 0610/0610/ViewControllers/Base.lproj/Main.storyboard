@@ -133,7 +133,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.4112127341271416" green="0.79641870709903495" blue="0.92553979159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.71372549019607845" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="192-sd-roI" firstAttribute="leading" secondItem="gGX-ng-CWl" secondAttribute="leading" id="0kh-Ir-T3O"/>
                             <constraint firstItem="gGX-ng-CWl" firstAttribute="trailing" secondItem="192-sd-roI" secondAttribute="trailing" id="0sD-2B-dIN"/>
@@ -162,7 +162,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.74509803921568629" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Qej-ea-3Hr" firstAttribute="leading" secondItem="FCX-dg-f9P" secondAttribute="leading" id="BWp-ey-cvO"/>
                             <constraint firstItem="Qej-ea-3Hr" firstAttribute="top" secondItem="FCX-dg-f9P" secondAttribute="top" id="dPk-Ik-oRK"/>

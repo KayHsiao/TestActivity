@@ -42,12 +42,7 @@ class SettingsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
-        if #available(iOS 11.0, *) {
-            selectedBackgroundView.backgroundColor = UIColor(named: "Green 3")
-        } else {
-            // Fallback on earlier versions
-            selectedBackgroundView.backgroundColor = UIColor(hexString: "41D192")
-        }
+        selectedBackgroundView.backgroundColor = Theme.current.tableViewCellSelectedBackground
     }
 
     fileprivate func applyTheme() {
@@ -97,6 +92,7 @@ extension SettingsViewController: UITableViewDataSource {
 
             cell.backgroundColor = Theme.current.tableViewCellBackgorund
 //            cell.selectedBackgroundView = selectedBackgroundView
+            cell.selectionStyle = .none
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)

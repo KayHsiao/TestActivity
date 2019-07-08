@@ -63,12 +63,12 @@ class HomeViewController: UIViewController {
         }
 
         searchController.searchBar.tintColor = Theme.current.tint
+        searchController.searchBar.barTintColor = Theme.current.accent
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
         } else {
             // Fallback on earlier versions
-            searchController.searchBar.barTintColor = Theme.current.accent
             tableView.tableHeaderView = searchController.searchBar
         }
 

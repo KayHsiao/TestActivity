@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 import SwiftyBeaver
 
 let log = SwiftyBeaver.self
@@ -16,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        applyTheme()
+        setupFabric()
         setupSwiftyBeaver()
+        applyTheme()
         return true
     }
 
@@ -50,13 +52,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
 
-    func applyTheme() {
-        if UserDefaults.standard.object(forKey: "kIsDarkTheme") == nil {
-            UserDefaults.standard.set(false, forKey: "kIsDarkTheme")
-            Theme.current = LightTheme()
-        } else {
-            Theme.current = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? DarkTheme() : LightTheme()
-        }
+    func setupFabric() {
+        Fabric.with([Crashlytics.self])
+        // TODO: Move this to where you establish a user session
+        self.logUser()
+    }
+
+    func logUser() {
+        // TODO: Use the current user's information
+        // You can call any combination of these three methods
+//        Crashlytics.sharedInstance().setUserEmail("user@fabric.io")
+//        Crashlytics.sharedInstance().setUserIdentifier("12345")
+//        Crashlytics.sharedInstance().setUserName("Test User")
     }
 
     func setupSwiftyBeaver() {
@@ -73,6 +80,15 @@ extension AppDelegate {
         log.addDestination(console)
         log.addDestination(file)
         log.addDestination(cloud)
+    }
+
+    func applyTheme() {
+        if UserDefaults.standard.object(forKey: "kIsDarkTheme") == nil {
+            UserDefaults.standard.set(false, forKey: "kIsDarkTheme")
+            Theme.current = LightTheme()
+        } else {
+            Theme.current = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? DarkTheme() : LightTheme()
+        }
     }
 
 }
