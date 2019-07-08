@@ -192,7 +192,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.83137254901960778" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="bxv-sx-6R2" firstAttribute="bottom" secondItem="LA8-jK-BBO" secondAttribute="bottom" id="chF-3M-ear"/>
                             <constraint firstItem="LA8-jK-BBO" firstAttribute="leading" secondItem="bxv-sx-6R2" secondAttribute="leading" id="fO0-NH-pXp"/>

@@ -128,14 +128,17 @@ extension MyCollectedViewController: CafeTableViewCellDelegate {
 
         cafe = cafes[indexPath.row]
 
-        let isCollected = UserDefaults.standard.bool(forKey: cafe.id)
+        var isCollected = UserDefaults.standard.bool(forKey: cafe.id)
         if isCollected {
             UserDefaults.standard.set(false, forKey: cafe.id)
+            isCollected = false
         } else {
             UserDefaults.standard.set(true, forKey: cafe.id)
+            isCollected = true
         }
         UserDefaults.standard.synchronize()
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+//        tableView.reloadRows(at: [indexPath], with: .automatic)
+        sender.isSelected = isCollected
     }
 
 }

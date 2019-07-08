@@ -38,7 +38,7 @@ class CafeTableViewCell: UITableViewCell {
                     return acc + "☆"
                 }
                 wifiStarLabel.text = wifiText + emptyWifiText
-                wifiStarLabel.textColor = cafe.wifi == 5 ? UIColor(hexString: "F1C84B") : Theme.current.tableViewCellLightText
+                wifiStarLabel.textColor = cafe.wifi == 5 ? Theme.current.fullStar : Theme.current.tableViewCellLightText
                 wifiStarLabel.textColor = cafe.wifi == 1 ? UIColor(hexString: "EB5757") : wifiStarLabel.textColor
 
                 // seat
@@ -49,7 +49,7 @@ class CafeTableViewCell: UITableViewCell {
                     return acc + "☆"
                 }
                 seatStarLabel.text = seatText + emptySeatText
-                seatStarLabel.textColor = cafe.seat == 5 ? UIColor(hexString: "F1C84B") : Theme.current.tableViewCellLightText
+                seatStarLabel.textColor = cafe.seat == 5 ? Theme.current.fullStar : Theme.current.tableViewCellLightText
                 seatStarLabel.textColor = cafe.seat == 1 ? UIColor(hexString: "EB5757") : seatStarLabel.textColor
 
 
@@ -61,7 +61,7 @@ class CafeTableViewCell: UITableViewCell {
                     return acc + "☆"
                 }
                 quiteStarLabel.text = quietText + emptyQuietText
-                quiteStarLabel.textColor = cafe.quiet == 5 ? UIColor(hexString: "F1C84B") : Theme.current.tableViewCellLightText
+                quiteStarLabel.textColor = cafe.quiet == 5 ? Theme.current.fullStar : Theme.current.tableViewCellLightText
                 quiteStarLabel.textColor = cafe.quiet == 1 ? UIColor(hexString: "EB5757") : quiteStarLabel.textColor
 
                 // tasty
@@ -72,7 +72,7 @@ class CafeTableViewCell: UITableViewCell {
                     return acc + "☆"
                 }
                 tastyStarLabel.text = tastyText + emptyTastyText
-                tastyStarLabel.textColor = cafe.tasty == 5 ? UIColor(hexString: "F1C84B") : Theme.current.tableViewCellLightText
+                tastyStarLabel.textColor = cafe.tasty == 5 ? Theme.current.fullStar : Theme.current.tableViewCellLightText
                 tastyStarLabel.textColor = cafe.tasty == 1 ? UIColor(hexString: "EB5757") : tastyStarLabel.textColor
 
                 // cheap
@@ -83,7 +83,7 @@ class CafeTableViewCell: UITableViewCell {
                     return acc + "☆"
                 }
                 cheapStarLabel.text = cheapText + emptyCheapText
-                cheapStarLabel.textColor = cafe.cheap == 5 ? UIColor(hexString: "F1C84B") : Theme.current.tableViewCellLightText
+                cheapStarLabel.textColor = cafe.cheap == 5 ? Theme.current.fullStar : Theme.current.tableViewCellLightText
                 cheapStarLabel.textColor = cafe.cheap == 1 ? UIColor(hexString: "EB5757") : cheapStarLabel.textColor
 
                 // music
@@ -94,14 +94,18 @@ class CafeTableViewCell: UITableViewCell {
                     return acc + "☆"
                 }
                 musicStarLabel.text = musicText + emptyMusicText
-                musicStarLabel.textColor = cafe.music == 5 ? UIColor(hexString: "F1C84B") : Theme.current.tableViewCellLightText
+                musicStarLabel.textColor = cafe.music == 5 ? Theme.current.fullStar : Theme.current.tableViewCellLightText
                 musicStarLabel.textColor = cafe.music == 1 ? UIColor(hexString: "EB5757") : musicStarLabel.textColor
 
 
 
                 let isCollected = UserDefaults.standard.bool(forKey: cafe.id)
                 collectButton.isSelected = isCollected ? true : false
-                collectButton.tintColor = isCollected ? .red : .white
+//                collectButton.tintColor = isCollected ? UIColor(hexString: "EB5757") : Theme.current.tint
+                collectButton.tintColor = Theme.current.tint
+//                if !isCollected {
+//
+//                }
             }
         }
     }
@@ -158,10 +162,10 @@ class CafeTableViewCell: UITableViewCell {
         cardView.layer.masksToBounds = false
 
         urlButton.setImage(UIImage(named: "speaker")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        collectButton.setImage(UIImage(named: "youhui")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        collectButton.setImage(UIImage(named: "xinxi")?.withRenderingMode(.alwaysTemplate), for: .selected)
 
-        
+        collectButton.tintColor = Theme.current.tint
+        collectButton.setImage(UIImage(named: "navbar_icon_picked_default")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        collectButton.setImage(UIImage(named: "navbar_icon_picked_pressed"), for: .selected)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -171,8 +175,6 @@ class CafeTableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
-
     }
 
     func applyTheme() {
@@ -193,9 +195,7 @@ class CafeTableViewCell: UITableViewCell {
         quiteLabel.textColor = Theme.current.tableViewCellLightText
         musicLabel.textColor = Theme.current.tableViewCellLightText
 
-
         urlButton.tintColor = Theme.current.tint
-        collectButton.tintColor = Theme.current.tint
     }
 
 }

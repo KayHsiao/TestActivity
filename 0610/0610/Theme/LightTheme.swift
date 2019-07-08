@@ -20,4 +20,6 @@ class LightTheme: ThemeProtocol {
     var accent: UIColor = UIColor(hexString: "00B156")!
     var tint: UIColor = UIColor.white
     var shadow: UIColor = UIColor(hexString: "00984B")!
+
+    var fullStar: UIColor = UIColor(hexString: "F1C84B")!
 }

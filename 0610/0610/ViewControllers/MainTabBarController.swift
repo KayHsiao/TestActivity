@@ -89,7 +89,7 @@ class MainTabBarController: UITabBarController {
                 } else {
                     // Fallback on earlier versions
                 }
-                homeNav.tabBarItem.image = UIImage(named: "zhuce")
+                homeNav.tabBarItem.image = UIImage(named: "tabbar_icon_shop_default")
                 homeNav.tabBarItem.title = "咖啡廳"
 
                 vcs.append(homeNav)
@@ -98,7 +98,7 @@ class MainTabBarController: UITabBarController {
                 let collectiveVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
                 collectiveVC.navigationItem.title = MyViewControllerType.viewController1.rawValue
                 let collectiveNav = UINavigationController.init(rootViewController: collectiveVC)
-                collectiveNav.tabBarItem.image = UIImage(named: "user")
+                collectiveNav.tabBarItem.image = UIImage(named: "tabbar_icon_map_default")
                 collectiveNav.tabBarItem.title = MyViewControllerType.viewController1.rawValue
 
                 vcs.append(collectiveNav)
@@ -107,7 +107,7 @@ class MainTabBarController: UITabBarController {
                 let settingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingsViewController
                 settingVC.navigationItem.title = MyViewControllerType.viewController2.rawValue
                 let settingNav = UINavigationController.init(rootViewController: settingVC)
-                settingNav.tabBarItem.image = UIImage(named: "heart")
+                settingNav.tabBarItem.image = UIImage(named: "tabbar_icon_mine_default")
                 settingNav.tabBarItem.title = MyViewControllerType.viewController2.rawValue
 
                 vcs.append(settingNav)

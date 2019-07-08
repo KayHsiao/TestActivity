@@ -20,4 +20,6 @@ class DarkTheme: ThemeProtocol {
     var accent: UIColor = UIColor(hexString: "00BE5D")!
     var tint: UIColor = UIColor.black
     var shadow: UIColor = UIColor.black
+
+    var fullStar: UIColor = UIColor(hexString: "F5D468")!
 }

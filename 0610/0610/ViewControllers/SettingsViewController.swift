@@ -53,7 +53,11 @@ class SettingsViewController: UIViewController {
 
         self.tabBarController?.tabBar.barTintColor = Theme.current.tabBar
         self.tabBarController?.tabBar.tintColor = Theme.current.tint
-        self.tabBarController?.tabBar.unselectedItemTintColor = Theme.current.tabBarUnSelected
+        if #available(iOS 10.0, *) {
+            self.tabBarController?.tabBar.unselectedItemTintColor = Theme.current.tabBarUnSelected
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
