@@ -22,14 +22,18 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hA-tQ-5HA">
                         <rect key="frame" x="1" y="1" width="143" height="63"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="v7Q-eZ-bvq">
-                                <rect key="frame" x="24.5" y="19" width="94.5" height="25"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="v7Q-eZ-bvq">
+                                <rect key="frame" x="15" y="8" width="120" height="47"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youhui" translatesAutoresizingMaskIntoConstraints="NO" id="8vR-uj-nk7">
-                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <rect key="frame" x="0.0" y="11" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="8Rv-MN-DaS"/>
+                                            <constraint firstAttribute="width" secondItem="8vR-uj-nk7" secondAttribute="height" multiplier="1:1" id="NbJ-Yp-vdv"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時時反水" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehf-eP-3go">
-                                        <rect key="frame" x="33" y="0.0" width="61.5" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時時反水" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehf-eP-3go">
+                                        <rect key="frame" x="33" y="14.5" width="87" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -39,8 +43,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="v7Q-eZ-bvq" firstAttribute="centerX" secondItem="8hA-tQ-5HA" secondAttribute="centerX" id="0ux-Dl-D9Q"/>
-                            <constraint firstItem="v7Q-eZ-bvq" firstAttribute="centerY" secondItem="8hA-tQ-5HA" secondAttribute="centerY" id="KCo-S1-OPf"/>
+                            <constraint firstAttribute="trailing" secondItem="v7Q-eZ-bvq" secondAttribute="trailing" constant="8" id="9FS-3B-jp8"/>
+                            <constraint firstItem="v7Q-eZ-bvq" firstAttribute="top" secondItem="8hA-tQ-5HA" secondAttribute="top" constant="8" id="Mmw-GX-BmA"/>
+                            <constraint firstItem="v7Q-eZ-bvq" firstAttribute="leading" secondItem="8hA-tQ-5HA" secondAttribute="leading" constant="15" id="NQW-cT-Dnc"/>
+                            <constraint firstAttribute="bottom" secondItem="v7Q-eZ-bvq" secondAttribute="bottom" constant="8" id="ybV-Vq-Nad"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -22,21 +22,18 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yU-le-fBG">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E2g-GM-dO7">
-                                <rect key="frame" x="21" y="52" width="208" height="146"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="E2g-GM-dO7">
+                                <rect key="frame" x="12.5" y="45" width="225.5" height="160.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hAR-5k-nYD">
-                                        <rect key="frame" x="41.5" y="0.0" width="125" height="125"/>
+                                        <rect key="frame" x="50" y="0.0" width="125" height="125"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="hAR-5k-nYD" secondAttribute="height" multiplier="1:1" id="cAC-W0-mnZ"/>
+                                            <constraint firstAttribute="width" secondItem="hAR-5k-nYD" secondAttribute="height" multiplier="1:1" id="M9H-N4-uO9"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="多喝熱水多喝熱水多喝熱水" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqU-JI-aHb">
-                                        <rect key="frame" x="0.0" y="125" width="208" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="318-3r-naQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="多喝熱水多喝熱水多喝熱水喝熱水多喝熱水多喝熱水" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqU-JI-aHb">
+                                        <rect key="frame" x="0.0" y="129" width="225.5" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -44,11 +41,12 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E2g-GM-dO7" secondAttribute="trailing" id="5yv-rj-DuF"/>
+                            <constraint firstItem="E2g-GM-dO7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8yU-le-fBG" secondAttribute="top" constant="8" id="6uT-JH-w2x"/>
+                            <constraint firstItem="E2g-GM-dO7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8yU-le-fBG" secondAttribute="leading" constant="8" id="9R5-f3-rxD"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E2g-GM-dO7" secondAttribute="bottom" constant="8" id="J0I-2z-JmW"/>
                             <constraint firstAttribute="width" secondItem="8yU-le-fBG" secondAttribute="height" multiplier="1:1" id="UWU-KO-4Fz"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E2g-GM-dO7" secondAttribute="bottom" id="hy8-xT-OwU"/>
-                            <constraint firstItem="E2g-GM-dO7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8yU-le-fBG" secondAttribute="leading" id="o7l-qe-QM1"/>
-                            <constraint firstItem="E2g-GM-dO7" firstAttribute="centerY" secondItem="8yU-le-fBG" secondAttribute="centerY" id="qbb-ex-qb7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E2g-GM-dO7" secondAttribute="trailing" constant="8" id="nGB-xg-GUv"/>
+                            <constraint firstItem="E2g-GM-dO7" firstAttribute="centerY" secondItem="8yU-le-fBG" secondAttribute="centerY" id="qGf-PL-heJ"/>
                             <constraint firstItem="E2g-GM-dO7" firstAttribute="centerX" secondItem="8yU-le-fBG" secondAttribute="centerX" id="sj8-SV-El9"/>
                             <constraint firstItem="hAR-5k-nYD" firstAttribute="width" secondItem="8yU-le-fBG" secondAttribute="width" multiplier="1:2" id="sp5-Kf-8XR"/>
                         </constraints>

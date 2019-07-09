@@ -574,7 +574,7 @@ extension MIxViewController: UITableViewDelegate, UIScrollViewDelegate {
         case is TypeFour:
             let height = 65
             let tall = (content as! TypeFour).contents.count / 3 + (content as! TypeFour).contents.count % 3
-            return  CGFloat(height * tall) + 1
+            return  CGFloat(height * tall) + 3
 
         case is TypeFive:
             return 81

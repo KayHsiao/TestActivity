@@ -46,6 +46,11 @@ class ImageTableViewCell: UITableViewCell {
                 )
 
 
+
+//                imageView.kf.setImage(with: url, placeholder: UIImage(named: "image-placeholder-icon"), options: nil, progressBlock: nil, completionHandler: nil)
+
+
+
 //                let processor = DownsamplingImageProcessor(size: cellImageView.frame.size)
 //
 //                cellImageView.kf.indicatorType = .activity

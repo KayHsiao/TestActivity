@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Kingfisher
+import Kingfisher
 import Alamofire
 import AlamofireImage
 
@@ -17,23 +17,39 @@ class ButtonCollectionViewCell: UICollectionViewCell {
         didSet {
             if let imageStr = imageStr, let url = URL(string: imageStr) {
 
-                //
-                //                let imageView = UIImageView(frame: frame)
-                //                let placeholderImage = UIImage(named: "placeholder")!
 
-                let filter = ScaledToSizeFilter(size: imageView.frame.size)
+//                                let imageView = UIImageView(frame: frame)
+//                                let placeholderImage = UIImage(named: "placeholder")!
 
-                //                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
-                //                    size: cellImageView.frame.size,
-                //                    radius: 20.0
-                //                )
+//                let filter = ScaledToSizeFilter(size: imageView.frame.size)
 
-                imageView.af_setImage(
-                    withURL: url,
-                    placeholderImage: nil,
-                    filter: filter,
-                    imageTransition: .crossDissolve(0.2)
-                )
+//                                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+//                                    size: cellImageView.frame.size,
+//                                    radius: 20.0
+//                                )
+
+//                imageView.af_setImage(
+//                    withURL: url,
+//                    placeholderImage: nil,
+//                    filter: filter,
+//                    imageTransition: .crossDissolve(0.2)
+//                )
+
+
+                
+                imageView.kf.setImage(with: url, placeholder: UIImage(named: "image-placeholder-icon"), options: nil, progressBlock: nil, completionHandler: nil)
+//                imageView.kf.setImage(with: url,
+//                                      placeholder: UIImage(named: "image-placeholder-icon"),
+//                                      options: [
+//                                        .scaleFactor(UIScreen.main.scale),
+//                                        .transition(.fade(1)),
+//                                        .cacheOriginalImage,
+//                                        .processor(BlurImageProcessor(blurRadius: 0.5))
+//                                        ],
+//                                      progressBlock: nil, completionHandler: nil)
+
+
+
 
 //                let processor = DownsamplingImageProcessor(size: imageView.frame.size)
 //
@@ -57,7 +73,7 @@ class ButtonCollectionViewCell: UICollectionViewCell {
 //                    }
 //                }
             } else {
-                imageView.image = nil
+                imageView.image = UIImage(named: "image-placeholder-icon")
             }
         }
     }

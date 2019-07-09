@@ -31,9 +31,6 @@
                                 <state key="normal" image="speaker">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="clickCollectButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wdX-fN-Tra"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsl-Wa-3bT">
                                 <rect key="frame" x="40" y="8" width="210" height="24"/>

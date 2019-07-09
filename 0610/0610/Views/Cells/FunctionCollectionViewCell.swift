@@ -21,19 +21,24 @@ class FunctionCollectionViewCell: UICollectionViewCell {
                 //                let imageView = UIImageView(frame: frame)
                 //                let placeholderImage = UIImage(named: "placeholder")!
 
-                let filter = ScaledToSizeFilter(size: iconImageView.frame.size)
+//                let filter = ScaledToSizeFilter(size: iconImageView.frame.size)
 
                 //                let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
                 //                    size: cellImageView.frame.size,
                 //                    radius: 20.0
                 //                )
 
-                iconImageView.af_setImage(
-                    withURL: url,
-                    placeholderImage: nil,
-                    filter: filter,
-                    imageTransition: .crossDissolve(0.2)
-                )
+//                iconImageView.af_setImage(
+//                    withURL: url,
+//                    placeholderImage: nil,
+//                    filter: filter,
+//                    imageTransition: .crossDissolve(0.2)
+//                )
+
+
+                iconImageView.kf.setImage(with: url, placeholder: UIImage(named: "image-placeholder-icon"), options: nil, progressBlock: nil, completionHandler: nil)
+
+
 
 //                let processor = DownsamplingImageProcessor(size: iconImageView.frame.size)
 //
@@ -57,7 +62,7 @@ class FunctionCollectionViewCell: UICollectionViewCell {
 //                    }
 //                }
             } else {
-                iconImageView.image = nil
+                iconImageView.image = UIImage(named: "image-placeholder-icon")
             }
         }
     }
