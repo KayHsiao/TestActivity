@@ -10,21 +10,21 @@
             "content":
             [
                 {
-                    "text": "韓國瑜",
+                    "text": "文字兩行",
                     "textColor": "000000",
                     "textBackgroundColor": "AAAAAA",
                     "textImage": "https://img1.doubanio.com/pview/event_poster/large/public/14aae562b375719.jpg",
                     "textWeb": "https://www.douban.com/event/31542506/"
                 },
                 {
-                    "text": "郭台銘",
+                    "text": "圖片長寬比25:21",
                     "textColor": "000000",
                     "textBackgroundColor": "AAAAAA",
                     "textImage": "https://img3.doubanio.com/pview/event_poster/large/public/125451ad27ddb74.jpg",
                     "textWeb": "https://www.douban.com/event/31506355/"
                 },
                 {
-                    "text": "蔡英文",
+                    "text": "字型大小13pt",
                     "textColor": "000000",
                     "textBackgroundColor": "AAAAAA",
                     "textImage": "https://img1.doubanio.com/pview/event_poster/large/public/9549e472024bb47.jpg",
