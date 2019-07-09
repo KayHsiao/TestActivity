@@ -149,7 +149,23 @@ class CafeTableViewCell: UITableViewCell {
     // IBAction
 
     @IBAction func clickCollectButton(_ sender: UIButton) {
-        delegate?.didClickCollectButton(sender, at: indexPath)
+//        delegate?.didClickCollectButton(sender, at: indexPath)
+
+        if let cafe = cafe {
+            var isCollected = UserDefaults.standard.bool(forKey: cafe.id)
+
+            UserDefaults.standard.set(!isCollected, forKey: cafe.id)
+            UserDefaults.standard.synchronize()
+            isCollected = !isCollected
+
+            sender.isSelected = isCollected
+            if isCollected {
+                sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 6.0, options: .allowUserInteraction, animations: {
+                    sender.transform = .identity
+                }, completion: nil)
+            }
+        }
     }
 
     override func awakeFromNib() {

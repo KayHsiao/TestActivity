@@ -88,6 +88,8 @@ class HomeViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+
+        refreshControl.tintColor = Theme.current.tint
     }
 
     func setupNavigationBar() {
@@ -110,7 +112,7 @@ class HomeViewController: UIViewController {
         tableView.separatorStyle = .none
 
         refreshControl = UIRefreshControl()
-        refreshControl.tintColor = .white
+
         refreshControl.addTarget(self, action: #selector(getJSON), for: .valueChanged)
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
@@ -233,7 +235,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CafeTableViewCell", for: indexPath) as! CafeTableViewCell
         cell.selectionStyle = .none
 
-        cell.delegate = self
+//        cell.delegate = self
 
         cell.indexPath = indexPath
 
@@ -279,32 +281,32 @@ extension HomeViewController: UITableViewDelegate {
     }
 
 }
-
-extension HomeViewController: CafeTableViewCellDelegate {
-
-    func didClickCollectButton(_ sender: UIButton, at indexPath: IndexPath) {
-        var cafe: Cafe
-        if searchController.isActive {
-            cafe = searchResult[indexPath.row]
-        } else {
-            cafe = cafes[indexPath.row]
-        }
-
-        var isCollected = UserDefaults.standard.bool(forKey: cafe.id)
-        if isCollected {
-            UserDefaults.standard.set(false, forKey: cafe.id)
-            isCollected = false
-        } else {
-            UserDefaults.standard.set(true, forKey: cafe.id)
-            isCollected = true
-        }
-        UserDefaults.standard.synchronize()
-//        tableView.reloadRows(at: [indexPath], with: .automatic)
-//        sender.tintColor = Theme.current.fullStar
-        sender.isSelected = isCollected
-    }
-
-}
+//
+//extension HomeViewController: CafeTableViewCellDelegate {
+//
+//    func didClickCollectButton(_ sender: UIButton, at indexPath: IndexPath) {
+//        var cafe: Cafe
+//        if searchController.isActive {
+//            cafe = searchResult[indexPath.row]
+//        } else {
+//            cafe = cafes[indexPath.row]
+//        }
+//
+//        var isCollected = UserDefaults.standard.bool(forKey: cafe.id)
+//        if isCollected {
+//            UserDefaults.standard.set(false, forKey: cafe.id)
+//            isCollected = false
+//        } else {
+//            UserDefaults.standard.set(true, forKey: cafe.id)
+//            isCollected = true
+//        }
+//        UserDefaults.standard.synchronize()
+////        tableView.reloadRows(at: [indexPath], with: .automatic)
+////        sender.tintColor = Theme.current.fullStar
+//        sender.isSelected = isCollected
+//    }
+//
+//}
 
 extension HomeViewController: UISearchResultsUpdating {
 

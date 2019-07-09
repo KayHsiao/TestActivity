@@ -92,7 +92,7 @@ extension MyCollectedViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CafeTableViewCell", for: indexPath) as! CafeTableViewCell
         cell.selectionStyle = .none
 
-        cell.delegate = self
+//        cell.delegate = self
 
         cell.indexPath = indexPath
 
@@ -120,25 +120,25 @@ extension MyCollectedViewController: UITableViewDelegate {
     }
 
 }
-
-extension MyCollectedViewController: CafeTableViewCellDelegate {
-
-    func didClickCollectButton(_ sender: UIButton, at indexPath: IndexPath) {
-        var cafe: Cafe
-
-        cafe = cafes[indexPath.row]
-
-        var isCollected = UserDefaults.standard.bool(forKey: cafe.id)
-        if isCollected {
-            UserDefaults.standard.set(false, forKey: cafe.id)
-            isCollected = false
-        } else {
-            UserDefaults.standard.set(true, forKey: cafe.id)
-            isCollected = true
-        }
-        UserDefaults.standard.synchronize()
-//        tableView.reloadRows(at: [indexPath], with: .automatic)
-        sender.isSelected = isCollected
-    }
-
-}
+//
+//extension MyCollectedViewController: CafeTableViewCellDelegate {
+//
+//    func didClickCollectButton(_ sender: UIButton, at indexPath: IndexPath) {
+//        var cafe: Cafe
+//
+//        cafe = cafes[indexPath.row]
+//
+//        var isCollected = UserDefaults.standard.bool(forKey: cafe.id)
+//        if isCollected {
+//            UserDefaults.standard.set(false, forKey: cafe.id)
+//            isCollected = false
+//        } else {
+//            UserDefaults.standard.set(true, forKey: cafe.id)
+//            isCollected = true
+//        }
+//        UserDefaults.standard.synchronize()
+////        tableView.reloadRows(at: [indexPath], with: .automatic)
+//        sender.isSelected = isCollected
+//    }
+//
+//}
