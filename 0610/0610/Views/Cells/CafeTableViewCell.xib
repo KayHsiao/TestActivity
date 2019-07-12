@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="width" secondItem="ASg-Pw-9Ox" secondAttribute="height" multiplier="1:1" id="12N-yw-L9J"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="speaker">
+                                <state key="normal" image="list_icon_linkWeb_default">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
@@ -262,7 +262,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="speaker" width="25" height="25"/>
+        <image name="list_icon_linkWeb_default" width="24" height="22"/>
         <image name="youhui" width="25" height="25"/>
     </resources>
 </document>

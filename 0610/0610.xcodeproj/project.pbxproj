@@ -657,14 +657,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 854847YMD9;
+				DEVELOPMENT_TEAM = C3K3489WMP;
 				INFOPLIST_FILE = "$(SRCROOT)/0610/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hdihdif.-610";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggboau.YilanCafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "0610/Supporting Files/0610-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -680,14 +680,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 854847YMD9;
+				DEVELOPMENT_TEAM = C3K3489WMP;
 				INFOPLIST_FILE = "$(SRCROOT)/0610/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hdihdif.-610";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggboau.YilanCafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "0610/Supporting Files/0610-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

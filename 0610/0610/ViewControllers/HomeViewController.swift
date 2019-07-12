@@ -49,6 +49,9 @@ class HomeViewController: UIViewController {
     }
 
     fileprivate func applyTheme() {
+        view.backgroundColor = Theme.current.tableViewCellBackgorund
+
+
         navigationController?.navigationBar.barStyle = UserDefaults.standard.bool(forKey: "kIsDarkTheme") ? .default : .black
 
         navigationController?.navigationBar.backgroundColor = Theme.current.navigationBar
@@ -93,7 +96,7 @@ class HomeViewController: UIViewController {
     }
 
     func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "xinxi"), style: .plain, target: self, action: #selector(showSortActions))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "navbar_icon_filter_default"), style: .plain, target: self, action: #selector(showSortActions))
 
         // SearchController
         searchController = UISearchController(searchResultsController: nil)
@@ -181,6 +184,14 @@ class HomeViewController: UIViewController {
         alertController.addAction(title: "取消", style: .cancel, isEnabled: true) { (action) in
             //
         }
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+            alertController.popoverPresentationController?.permittedArrowDirections = .up
+            alertController.popoverPresentationController?.sourceView = self.view
+            alertController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        }
+
         alertController.show()
     }
 

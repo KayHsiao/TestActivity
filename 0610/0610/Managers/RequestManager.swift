@@ -40,7 +40,7 @@ enum ServerEnvironment {
                 keys = NSDictionary(contentsOfFile: path)
             }
 
-            let productionApiKeyDomain = keys?["ApiKeyDomainProduction"] as? String ?? "https://正式環境網址"
+            let productionApiKeyDomain = keys?["ApiKeyDomainProduction"] as? String ?? "https://raw.githubusercontent.com/mbywczgxy/0610"
             log.debug("productionApiKeyDomain: \(productionApiKeyDomain)")
 
             return productionApiKeyDomain

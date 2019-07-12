@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsViewController: UIViewController {
 
@@ -46,6 +47,7 @@ class SettingsViewController: UIViewController {
     }
 
     fileprivate func applyTheme() {
+        view.backgroundColor = Theme.current.tableViewBackground
         tableView.backgroundColor = Theme.current.tableViewBackground
         tableView.reloadData()
 
@@ -59,6 +61,23 @@ class SettingsViewController: UIViewController {
             // Fallback on earlier versions
         }
     }
+
+    func presentContactUsPage() {
+        guard MFMailComposeViewController.canSendMail() else { return }
+
+        let mailController = MFMailComposeViewController()
+
+        mailController.navigationBar.tintColor = UIColor.white
+        mailController.mailComposeDelegate = self
+
+        mailController.setSubject("宜蘭工作咖啡館 \(appVersionString)")
+
+        let toRecipients = ["kay_hsiao@zonvan.com.tw"]
+        mailController.setToRecipients(toRecipients)
+
+        present(mailController, animated: true, completion: nil)
+    }
+
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -68,7 +87,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,9 +103,9 @@ extension SettingsViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchTableViewCell", for: indexPath) as! SwitchTableViewCell
+            
             cell.titleLabel.text = "夜間模式"
             cell.delegate = self
-
 
             if UserDefaults.standard.bool(forKey: "kIsDarkTheme") {
                 cell.switch.setOn(true, animated: false)
@@ -99,6 +118,14 @@ extension SettingsViewController: UITableViewDataSource {
             cell.selectionStyle = .none
             return cell
         case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.accessoryType = .disclosureIndicator
+            cell.textLabel?.text = "回報問題"
+            cell.textLabel?.textColor = Theme.current.tableViewCellLightText
+            cell.backgroundColor = Theme.current.tableViewCellBackgorund
+            cell.selectedBackgroundView = selectedBackgroundView
+            return cell
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.text = "隱私權政策"
@@ -119,7 +146,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "v1.0"
+        return "version \(appVersionString)"
     }
 
 }
@@ -134,6 +161,8 @@ extension SettingsViewController: UITableViewDelegate {
             let myCollectedVC = UIStoryboard.main?.instantiateViewController(withIdentifier: "MyCollectedViewController") as! MyCollectedViewController
             navigationController?.pushViewController(myCollectedVC)
         case 2:
+            presentContactUsPage()
+        case 3:
             if let url = URL(string: "https://www.privacypolicies.com/privacy/view/83496ea793b852bb13f0f53d58711c6e") {
                 if #available(iOS 10, *) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -154,4 +183,12 @@ extension SettingsViewController: SwitchTableViewCellDelegate {
         applyTheme()
     }
 
+}
+
+// MARK: - MF Mail compose view controller delegate
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

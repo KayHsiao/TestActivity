@@ -177,7 +177,7 @@ class CafeTableViewCell: UITableViewCell {
         cardView.shadowOpacity = 0.7
         cardView.layer.masksToBounds = false
 
-        urlButton.setImage(UIImage(named: "speaker")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        urlButton.setImage(UIImage(named: "list_icon_linkWeb_default")?.withRenderingMode(.alwaysTemplate), for: .normal)
 
         collectButton.tintColor = Theme.current.tint
         collectButton.setImage(UIImage(named: "navbar_icon_picked_default")?.withRenderingMode(.alwaysTemplate), for: .normal)

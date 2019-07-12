@@ -74,6 +74,7 @@ class MyCollectedViewController: UIViewController {
     }
 
     fileprivate func applyTheme() {
+        view.backgroundColor = Theme.current.tableViewBackground
         tableView.backgroundColor = Theme.current.tableViewCellBackgorund
         tableView.reloadData()
 
